@@ -1,0 +1,1695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Royal Dark — website</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,system-ui,sans-serif;background:#ffffff;color:#0a2540;-webkit-font-smoothing:antialiased}
+a{color:#0a2540;text-decoration:none}a:hover{color:#c2410c}
+button{font-family:inherit;cursor:pointer;color:inherit}
+input,select,textarea{font-family:inherit;font-size:14px;color:#0a2540}
+h1,h2,h3,h4,p{margin:0}
+.site{width:100%;min-height:100vh;display:flex;flex-direction:column;background:#ffffff}
+.main{flex:1}
+.wrap{width:100%;max-width:1440px;margin:0 auto;padding-left:32px;padding-right:32px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.m-only{display:none!important}
+.bar{background:#0a2540;color:#ffffff;font-size:12px}
+.bar-in{display:flex;align-items:center;gap:12px;min-height:36px}
+.promo{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center}
+.promo b{font-weight:700}
+.o9{opacity:.9}.o5{opacity:.5}
+.code{border:1px dashed rgba(255,255,255,.75);padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px;letter-spacing:.04em}
+.bar-phones{display:flex;align-items:center;gap:8px}
+.bar-phones a{color:#ffffff;font-weight:600}.bar-phones a:hover{color:#ffd2bd}
+.icon-btn{width:40px;height:40px;background:none;border:0;display:flex;align-items:center;justify-content:center;color:#ffffff;position:relative;flex-shrink:0}
+.hdr{background:#ffffff;box-shadow:0 1px 4px rgba(10,37,64,.08);position:sticky;top:0;z-index:30}
+.hdr-in{display:flex;align-items:center;gap:16px;padding-top:10px;padding-bottom:10px}
+.logo{background:none;border:0;padding:0;flex-shrink:0;display:flex}
+.logo img{height:54px;width:auto;display:block;border-radius:6px}
+.home-act{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 0 0 16px;background:none;border:0;border-left:1px solid #dbe4ec;font-size:11px;font-weight:600;color:#c2410c;flex-shrink:0}
+.search{flex:1;min-width:0;display:flex;align-items:center;border:1.5px solid #dbe4ec;border-radius:999px;padding:4px;background:#ffffff}
+.search:focus-within{border-color:#1a6aa8}
+.search-cat{border:0;border-right:1px solid #dbe4ec;background:transparent;padding:8px 10px 8px 14px;font-size:12px;font-weight:600;max-width:160px;outline:none;cursor:pointer}
+.search-in{flex:1;min-width:0;border:0;outline:none;background:transparent;padding:8px 12px}
+.search-btn{width:40px;height:40px;border-radius:999px;background:#0a2540;border:0;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bulk-pill{display:flex;align-items:center;gap:10px;border:1.5px solid #bfe6cf;background:#f1faf4;border-radius:999px;padding:6px 16px 6px 6px;flex-shrink:0;text-align:left}
+.bulk-pill:hover{border-color:#1f9d55}
+.wa-dot{width:36px;height:36px;border-radius:999px;background:#1f9d55;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pill-eye{display:block;font-size:11px;color:#3d5a4a;font-weight:500}
+.pill-title{display:block;font-size:13px;font-weight:700;color:#14532d}
+.acts{display:flex;align-items:center;flex-shrink:0}
+.act{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 18px;background:none;border:0;font-size:11px;font-weight:600;position:relative}
+.act:hover{color:#c2410c}
+.act + .act{border-left:1px solid #dbe4ec}
+.badge{position:absolute;top:-2px;right:10px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:#d9480f;color:#ffffff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.badge.sm{top:3px;right:1px;min-width:15px;height:15px;font-size:9px;padding:0 3px}
+.phone-row{justify-content:center;align-items:center;gap:8px;font-size:11px;color:#5b6b7b;padding-bottom:8px}
+.phone-row a{font-weight:600}
+.sec{padding-top:32px;padding-bottom:36px}
+.sec-sm{padding-top:12px;padding-bottom:12px}
+.sec-title{text-align:center;font-size:30px;font-weight:700;margin-bottom:24px}
+.center{display:flex;justify-content:center;margin-top:24px}
+.btn-pill{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;border:1px solid #dbe4ec;background:#ffffff;padding:10px 24px;border-radius:999px;box-shadow:0 1px 3px rgba(10,37,64,.08)}
+.btn-pill:hover{color:#c2410c;border-color:#c2410c}
+.cats{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:12px;padding-top:18px;padding-bottom:14px}
+.cat{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;padding:0}
+.cat-card{width:92px;height:92px;border-radius:22px;border:1px solid #dbe4ec;display:flex;align-items:center;justify-content:center;transition:transform .15s,border-color .15s}
+.cat:hover .cat-card{transform:translateY(-2px);border-color:#1a6aa8}
+.cat-ic{width:40px;height:40px}
+.cat-lbl{font-size:12px;font-weight:600;text-align:center;line-height:1.3}
+.hero{position:relative;height:559px;border-radius:20px;overflow:hidden;display:flex;align-items:center;gap:48px;padding:0 96px;transition:background .4s}
+.hero-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:18px;max-width:620px}
+.eyebrow{align-self:flex-start;background:#d9480f;color:#ffffff;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.hero-h{font-size:60px;line-height:1.08;font-weight:800;color:#ffffff;white-space:pre-line}
+.hero-p{font-size:18px;line-height:1.6;color:rgba(255,255,255,.8)}
+.hero-cta{align-self:flex-start;margin-top:8px;background:#ffffff;color:#0a2540;font-weight:700;font-size:15px;padding:14px 28px;border-radius:999px;border:0;display:flex;align-items:center;gap:10px}
+.hero-cta:hover{background:#ffe9dc}
+.hero-art{width:400px;height:400px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-art-in{width:70%;height:70%;border-radius:999px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.hero-ic{width:60%;height:60%}
+.hero-banner{position:absolute;inset:0;border:0;padding:0;background:none;display:block;width:100%;height:100%}
+.hero-banner img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block}
+.hero-nav{z-index:2;position:absolute;top:50%;margin-top:-22px;width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.92);border:0;display:flex;align-items:center;justify-content:center}
+.hero-nav.prev{left:20px}.hero-nav.next{right:20px}
+.dots{z-index:2;position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center}
+.dot-btn{height:24px;padding:0 4px;border:0;background:none;display:flex;align-items:center}
+.dot{display:block;height:10px;border-radius:999px;transition:width .2s}
+.deals{display:flex;border-radius:18px;overflow:hidden;border:1px solid #dbe4ec;background:#ffffff}
+.deals-head{width:230px;flex-shrink:0;background:#d9480f;color:#ffffff;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.deals-eye{display:block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.deals-title{display:block;font-size:32px;font-weight:800;line-height:1.1}
+.deals-all{background:none;border:0;padding:0;color:#ffffff;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;text-align:left}
+.deals-track{flex:1;min-width:0;display:flex;gap:12px;overflow-x:auto;padding:16px;scroll-snap-type:x mandatory}
+.deal{width:150px;flex-shrink:0;display:flex;flex-direction:column;gap:8px;background:none;border:0;padding:0;text-align:left;scroll-snap-align:start}
+.deal-img{height:150px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.deal-ic{width:60px;height:60px}
+.deal-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.deal:hover .deal-name{color:#c2410c}
+.tag-green{align-self:flex-start;font-size:12px;font-weight:700;color:#1f7a3f;background:#e6f6ec;padding:3px 8px;border-radius:6px}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
+.grid.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pcard{background:#ffffff;border:1px solid #dbe4ec;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 2px 10px rgba(10,37,64,.05);transition:box-shadow .15s}
+.pcard:hover{box-shadow:0 8px 24px rgba(10,37,64,.12)}
+.pimg{position:relative;width:100%;height:190px;border-radius:12px;border:0;display:flex;align-items:center;justify-content:center;margin-bottom:12px;padding:0}
+.pic{width:76px;height:76px}
+.new{position:absolute;top:8px;left:8px;background:#d9480f;color:#ffffff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.off{position:absolute;top:12px;right:12px;background:#e6f6ec;color:#1f7a3f;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+.pname{background:none;border:0;padding:0;font-size:14px;font-weight:700;line-height:1.35;min-height:38px;margin-bottom:6px}
+.pname:hover{color:#c2410c}
+.stars{display:flex;gap:2px;margin-bottom:6px}
+.st{width:14px;height:14px}
+.price{font-size:15px;font-weight:600;color:#1a6aa8;margin-bottom:12px}
+.mrp{font-size:12px;color:#5b6b7b;text-decoration:line-through;font-weight:400;margin-left:6px}
+.pbtns{width:100%;margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.btn-navy,.btn-line,.btn-o,.btn-wa,.btn-w{height:40px;border-radius:999px;font-size:13px;font-weight:600;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;white-space:nowrap}
+.btn-navy{background:#0a2540;color:#ffffff}.btn-navy:hover{background:#163a63;color:#ffffff}
+.btn-line{border:1.5px solid #d9480f;background:#ffffff;color:#c2410c}.btn-line:hover{background:#fff4ee;color:#c2410c}
+.btn-o{background:#d9480f;color:#ffffff}.btn-o:hover{background:#c2410c;color:#ffffff}
+.btn-wa{background:#1f9d55;color:#ffffff}.btn-wa:hover{background:#17854a;color:#ffffff}
+.btn-w{background:#ffffff;color:#14532d}.btn-w:hover{background:#ecfdf3;color:#14532d}
+button:disabled{opacity:.45;cursor:not-allowed}
+.trust-sec{background:#eef4f9}
+.trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding-top:28px;padding-bottom:28px}
+.trust-item{display:flex;align-items:center;justify-content:center;gap:14px}
+.ring{width:56px;height:56px;border-radius:999px;background:#ffffff;border:2px solid #b9d6ec;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ring svg{width:24px;height:24px}
+.t-title{display:block;font-size:15px;font-weight:700}
+.t-sub{display:block;font-size:13px;color:#5b6b7b}
+.wave{background:#eef4f9;line-height:0}
+.wave svg{display:block;width:100%;height:48px}
+.why-sec{background:#eef4f9;padding-top:24px;padding-bottom:40px}
+.why{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.why-l{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.why-logo{height:120px;width:auto;border-radius:12px;display:block}
+.why-body{width:100%;max-width:440px;display:flex;flex-direction:column;gap:16px}
+.why-h{font-size:26px;font-weight:700;line-height:1.25}
+.sky{color:#1a6aa8}
+.checks{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.checks li{display:flex;align-items:center;gap:12px;font-size:14px;color:#4a5a6a}
+.ck{width:22px;height:22px;border-radius:999px;border:2px solid #b9d6ec;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ck svg{width:11px;height:11px}
+.coll{border-radius:24px;overflow:hidden;border:1px solid #dbe4ec;box-shadow:0 10px 30px rgba(10,37,64,.12);display:flex;flex-direction:column;background:#0a2540}
+.coll-vis{height:240px;background:#ffffff;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:20px}
+.coll-tile{border-radius:14px;display:flex;align-items:center;justify-content:center;border:0;padding:0}
+.coll-tile svg{width:40px;height:40px}
+.coll-body{padding:28px;display:flex;flex-direction:column;gap:10px}
+.coll-h{font-size:24px;font-weight:700;color:#ffffff;line-height:1.2}
+.coll-p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.8);max-width:520px}
+.coll-btns{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.coll-btns > *{height:44px;font-size:14px}
+.insta-sec{background:#eef4f9;padding-top:24px;padding-bottom:56px}
+.panel{background:#ffffff;border-radius:24px;border:1px solid #dbe4ec;box-shadow:0 10px 30px rgba(10,37,64,.1);padding:32px}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}
+.panel-h{font-size:18px;font-weight:700}
+.panel-sub{font-size:14px;color:#5b6b7b;margin-top:2px}
+.soc{display:flex;gap:10px;flex-shrink:0}
+.soc a{width:44px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:800;font-size:18px}
+.ig{background:#b1306f}.fb{background:#1f5bb8}
+.igrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.itile{position:relative;aspect-ratio:1 / 1;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.itile svg{width:84px;height:84px}
+.icap{position:absolute;left:0;right:0;bottom:0;background:rgba(6,26,46,.82);color:#ffffff;font-size:12px;line-height:1.4;padding:10px 14px}
+.foot{background:#061a2e;color:rgba(255,255,255,.65);font-size:14px}
+.foot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;padding-top:48px;padding-bottom:48px}
+.foot-col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.foot-logo{align-self:flex-start;background:none;border:0;padding:0}
+.foot-logo img{height:64px;width:auto;border-radius:8px;display:block}
+.foot-h{color:#ffffff;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+.flinks{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.flink{background:none;border:0;padding:0;color:rgba(255,255,255,.65);font-size:14px;text-align:left;display:flex;align-items:center;gap:8px}
+.flink:hover{color:#f27a3d}
+.foot a{color:rgba(255,255,255,.65)}.foot a:hover{color:#f27a3d}
+.clist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13px}
+.clist li{display:flex;align-items:flex-start;gap:10px;line-height:1.55}
+.clist svg{flex-shrink:0;margin-top:3px}
+.foot .clist a{color:#ffffff;font-weight:600}
+.fsoc{display:flex;gap:10px}
+.foot .fsoc a{width:36px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:800}
+.foot-pill{align-self:flex-start;display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.22);background:transparent;border-radius:999px;padding:6px 16px 6px 6px;text-align:left}
+.foot-pill:hover{border-color:#1f9d55}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);background:#010f1a;font-size:12px;color:rgba(255,255,255,.55)}
+.foot-bot-in{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:20px;padding-bottom:20px}
+.foot-bot p{display:flex;align-items:center;gap:6px}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:12px;color:#5b6b7b;padding-top:20px;flex-wrap:wrap}
+.crumb{background:none;border:0;padding:0;font-size:12px;color:#5b6b7b}.crumb:hover{color:#c2410c}
+.crumb-now{color:#0a2540;font-weight:600}
+.page-h{font-size:32px;font-weight:800;margin-top:8px;line-height:1.2}
+.page-sub{font-size:14px;color:#5b6b7b;margin-top:6px}
+.cat-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;padding-top:24px;padding-bottom:48px;align-items:start}
+.side{border:1px solid #dbe4ec;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:2px;position:sticky;top:110px}
+.side-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#5b6b7b;padding:10px 10px 4px}
+.chip{background:none;border:0;border-radius:10px;padding:9px 10px;font-size:13px;font-weight:500;text-align:left;display:flex;justify-content:space-between;gap:8px;white-space:nowrap}
+.chip:hover{background:#eef4f9}
+.chip.is-on{background:#0a2540;color:#ffffff}
+.chip-n{font-size:11px;opacity:.7}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.tool-l{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.count{font-size:13px;color:#5b6b7b}
+.qchip{display:inline-flex;align-items:center;gap:6px;background:#eef4f9;border:0;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600}
+.sel{border:1.5px solid #dbe4ec;border-radius:10px;padding:9px 12px;background:#ffffff;font-size:13px;cursor:pointer}
+.empty{border:1.5px dashed #b9d6ec;border-radius:16px;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.empty h2{font-size:20px;font-weight:700}
+.empty p{font-size:14px;color:#5b6b7b}
+.pd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;padding-top:24px;padding-bottom:24px}
+.pd-img{height:480px;border-radius:24px;display:flex;align-items:center;justify-content:center;position:relative}
+.pd-img svg{width:200px;height:200px}
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+.thumb{height:96px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.thumb svg{width:36px;height:36px}
+.pd-info{display:flex;flex-direction:column;gap:16px}
+.pd-cat{align-self:flex-start;background:#eef4f9;color:#1a6aa8;font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;border:0}
+.pd-h{font-size:34px;font-weight:800;line-height:1.15}
+.pd-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pd-now{font-size:32px;font-weight:700;color:#1a6aa8}
+.pd-mrp{font-size:16px;color:#5b6b7b;text-decoration:line-through}
+.pd-off{font-size:14px;font-weight:700;color:#1f7a3f}
+.note{font-size:12px;color:#5b6b7b;margin-top:-10px}
+.qty-row{display:flex;align-items:center;gap:14px}
+.lbl{font-size:13px;font-weight:600}
+.qty{display:inline-flex;align-items:center;border:1.5px solid #dbe4ec;border-radius:999px;overflow:hidden;background:#ffffff}
+.qty button{width:40px;height:40px;background:#ffffff;border:0;font-size:18px;font-weight:600}
+.qty button:hover{background:#eef4f9}
+.qty span{min-width:36px;text-align:center;font-weight:700;font-size:14px}
+.pd-btns{display:flex;gap:12px;flex-wrap:wrap}
+.pd-btns > *{flex:1;min-width:170px;height:48px;font-size:15px}
+.hl{border-top:1px solid #dbe4ec;padding-top:18px}
+.inline-link{background:none;border:0;padding:0;font-size:14px;font-weight:600;color:#1a6aa8;text-decoration:underline}
+.cart-layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px;padding-top:24px;padding-bottom:48px;align-items:start}
+.citems{display:flex;flex-direction:column;gap:12px}
+.citem{display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:16px;align-items:center;border:1px solid #dbe4ec;border-radius:16px;padding:12px}
+.cimg{width:88px;height:88px;border-radius:12px;border:0;display:flex;align-items:center;justify-content:center;padding:0}
+.cimg svg{width:40px;height:40px}
+.cname{background:none;border:0;padding:0;font-size:15px;font-weight:700;text-align:left}
+.cname:hover{color:#c2410c}
+.cmeta{font-size:13px;color:#5b6b7b;margin-top:2px}
+.cright{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.cline{font-weight:700;font-size:15px}
+.rm{background:none;border:0;padding:4px 0;font-size:12px;font-weight:600;color:#b42318}
+.summary{border:1px solid #dbe4ec;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px;background:#f8fbfd;position:sticky;top:110px}
+.summary h2{font-size:18px;font-weight:700}
+.srow{display:flex;justify-content:space-between;gap:12px;font-size:14px}
+.srow .muted{color:#5b6b7b}
+.stotal{display:flex;justify-content:space-between;font-size:18px;font-weight:800;border-top:1px solid #dbe4ec;padding-top:12px}
+.coupon{display:flex;gap:8px}
+.field-in{width:100%;min-width:0;border:1.5px solid #dbe4ec;border-radius:10px;padding:10px 12px;background:#ffffff;outline:none}
+.field-in:focus{border-color:#1a6aa8}
+textarea.field-in{resize:vertical;min-height:90px}
+.msg{font-size:12px;font-weight:600;color:#1f7a3f}
+.full-btn{width:100%;height:48px;font-size:15px}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1 / -1}
+.card{border:1px solid #dbe4ec;border-radius:18px;padding:24px;background:#ffffff}
+.card-h{font-size:18px;font-weight:700;margin-bottom:16px}
+.radios{display:flex;flex-direction:column;gap:10px}
+.radio{display:flex;align-items:center;gap:12px;border:1.5px solid #dbe4ec;border-radius:12px;padding:12px 14px;font-size:14px;cursor:pointer}
+.radio input{width:18px;height:18px;accent-color:#0a2540}
+.radio small{display:block;font-size:12px;color:#5b6b7b}
+.hint{font-size:12px;color:#b42318}
+.stack{display:flex;flex-direction:column;gap:20px}
+.mini{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+.ccards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-top:24px}
+.ccard{border:1px solid #dbe4ec;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;background:#ffffff}
+.ccard h2{font-size:18px;font-weight:700}
+.ccard p{font-size:14px;color:#4a5a6a;line-height:1.6}
+.cbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;padding-top:28px;padding-bottom:48px;align-items:start}
+.map{border-radius:18px;background:#e6f0f8;min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center}
+.map p{font-size:14px;color:#4a5a6a;max-width:320px;line-height:1.6}
+.done{max-width:600px;margin:0 auto;text-align:center;padding:72px 0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.done p{font-size:15px;color:#4a5a6a;line-height:1.65}
+.big-ring{width:88px;height:88px;border-radius:999px;background:#e6f6ec;display:flex;align-items:center;justify-content:center}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.btn-row > *{height:46px;font-size:14px}
+.narrow{max-width:520px;margin:0 auto;padding-top:40px;padding-bottom:64px}
+.tabs{display:flex;background:#eef4f9;border-radius:999px;padding:4px;margin:18px 0}
+.tab{flex:1;height:40px;border:0;border-radius:999px;background:none;font-weight:600;font-size:14px}
+.tab.is-on{background:#ffffff;box-shadow:0 1px 4px rgba(10,37,64,.12)}
+.info{background:#eef4f9;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.55;margin-top:14px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0a2540;color:#ffffff;border-radius:14px;padding:10px 10px 10px 16px;display:flex;align-items:center;gap:12px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:50;max-width:calc(100% - 24px)}
+.toast button{background:#ffffff;color:#0a2540;border:0;border-radius:999px;padding:8px 14px;font-weight:600;font-size:12px;white-space:nowrap}
+.ph{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;display:block}
+.cat-card,.pimg,.deal-img,.pd-img,.thumb,.cimg,.coll-tile{overflow:hidden}
+.cat-card .ph{padding:8px}
+.pimg .ph{padding:12px}
+.deal-img .ph{padding:10px}
+.hero-art-in{width:84%;height:84%;background:#ffffff;overflow:hidden}
+.hero-art-in .ph{mix-blend-mode:normal;padding:12%}
+.pd-img .ph{padding:40px}
+.thumb .ph{padding:8px}
+.cimg .ph{padding:6px}
+.coll-tile .ph{padding:6px}
+.itile .ph{padding:14%}
+.search{position:relative}
+.sugg{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#ffffff;border:1px solid #dbe4ec;border-radius:16px;box-shadow:0 16px 40px rgba(10,37,64,.18);padding:8px;z-index:40;max-height:min(460px,70vh);overflow-y:auto;text-align:left}
+.sugg-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#5b6b7b;padding:8px 10px 4px}
+.sugg-item{width:100%;display:flex;align-items:center;gap:12px;background:none;border:0;border-radius:10px;padding:8px 10px;text-align:left}
+.sugg-item:hover,.sugg-item.is-active{background:#eef4f9}
+.sugg-thumb{width:40px;height:40px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sugg-thumb .ph{padding:3px}
+.sugg-meta{flex:1;min-width:0;display:flex;flex-direction:column}
+.sugg-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sugg-sub{font-size:11px;color:#5b6b7b}
+.sugg-price{font-size:13px;font-weight:600;color:#1a6aa8;flex-shrink:0}
+.sugg-empty{font-size:13px;color:#5b6b7b;padding:12px 10px}
+.sugg-all{width:100%;margin-top:4px;border:0;border-top:1px solid #dbe4ec;background:none;padding:12px 10px 6px;font-size:13px;font-weight:600;color:#1a6aa8;text-align:left}
+.sugg-all:hover{color:#c2410c}
+@media (max-width:1200px){
+.grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid.g4{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hero{padding:0 72px;height:460px}
+.hero-h{font-size:46px}
+.hero-art{width:320px;height:320px}
+.cats{display:flex;overflow-x:auto;gap:14px}
+.cat{width:96px;flex-shrink:0}
+.bulk-pill{display:none}
+}
+@media (max-width:1023px){
+.d-only{display:none!important}
+.m-only{display:flex!important}
+.wrap{padding-left:12px;padding-right:12px}
+.bar-in{gap:4px;min-height:40px}
+.promo{font-size:11px;gap:6px}
+.hdr-in{gap:8px;padding-top:8px;padding-bottom:8px}
+.logo img{height:40px}
+.search-cat{max-width:92px;font-size:11px;padding:6px 4px 6px 10px}
+.search-in{padding:6px 8px;font-size:13px}
+.search-btn{width:34px;height:34px}
+.search{position:static}
+.sugg{left:12px;right:12px;top:calc(100% - 4px)}
+.cats{gap:10px;padding-top:14px;padding-bottom:10px}
+.cat{width:72px}
+.cat-card{width:64px;height:64px;border-radius:18px}
+.cat-ic{width:28px;height:28px}
+.cat-lbl{font-size:10px}
+.hero{height:auto;min-height:210px;padding:24px 16px 34px 20px;gap:8px;border-radius:16px}
+.hero-copy{gap:8px}
+.eyebrow{font-size:9px;padding:3px 8px}
+.hero-h{font-size:22px;line-height:1.15}
+.hero-p{display:none}
+.hero-cta{font-size:11px;padding:8px 14px;margin-top:4px}
+.hero-art{width:118px;height:118px}
+.hero-nav{display:none}.dots{bottom:6px}
+.dot{height:7px}
+.deals{flex-direction:column}
+.deals-head{width:auto;flex-direction:row;align-items:center;padding:12px 16px}
+.deals-eye{display:none}
+.deals-title{font-size:18px}
+.deals-all{font-size:11px;min-height:28px}
+.deals-track{padding:12px;gap:10px}
+.deal{width:112px}
+.deal-img{height:112px}
+.deal-ic{width:44px;height:44px}
+.deal-name{font-size:11px}
+.tag-green{font-size:10px}
+.grid,.grid.g4{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sec{padding-top:20px;padding-bottom:24px}
+.sec-title{font-size:22px;margin-bottom:16px}
+.trust{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 10px;padding-top:20px;padding-bottom:20px}
+.trust-item{justify-content:flex-start;gap:10px}
+.ring{width:42px;height:42px}
+.ring svg{width:18px;height:18px}
+.t-title{font-size:12px}.t-sub{font-size:11px}
+.wave svg{height:28px}
+.why{grid-template-columns:1fr;gap:20px}
+.why-logo{height:80px}
+.why-h{font-size:20px}
+.checks li{font-size:13px}
+.coll-vis{height:180px;gap:8px;padding:14px}
+.coll-tile svg{width:28px;height:28px}
+.coll-body{padding:20px}
+.coll-h{font-size:18px}
+.coll-btns{flex-direction:column}
+.panel{padding:18px;border-radius:20px}
+.panel-h{font-size:15px}.panel-sub{font-size:11px}
+.soc a{width:36px;height:36px;font-size:15px}
+.igrid{gap:6px}
+.itile{border-radius:10px}
+.itile svg{width:30px;height:30px}
+.icap{display:none}
+.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px;padding-top:36px;padding-bottom:36px}
+.foot-brand{grid-column:1 / -1}
+.foot-bot-in{flex-direction:column;text-align:center}
+.cat-layout{grid-template-columns:minmax(0,1fr);gap:16px;padding-top:16px}
+.side{position:static;flex-direction:row;overflow-x:auto;padding:0;border:0;gap:8px}
+.side-h{display:none}
+.chip{border:1.5px solid #dbe4ec;border-radius:999px;padding:8px 14px;flex-shrink:0}
+.chip-n{display:none}
+.page-h{font-size:24px}
+.pd{grid-template-columns:minmax(0,1fr);gap:20px;padding-top:16px}
+.pd-img{height:300px}
+.pd-img svg{width:140px;height:140px}
+.thumb{height:64px}
+.pd-h{font-size:24px}
+.pd-now{font-size:26px}
+.cart-layout{grid-template-columns:minmax(0,1fr)}
+.summary{position:static}
+.ccards{grid-template-columns:minmax(0,1fr)}
+.two{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.grid,.grid.g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pcard{padding:8px;border-radius:14px}
+.pimg{height:150px;margin-bottom:8px}
+.pic{width:60px;height:60px}
+.pname{font-size:12px;min-height:32px;margin-bottom:4px}
+.stars{display:none}
+.price{font-size:13px;margin-bottom:8px}
+.mrp{display:block;margin-left:0;font-size:11px}
+.pcard .btn-navy,.pcard .btn-line{height:36px;font-size:12px;padding:0 10px}
+.pbtns{gap:6px}
+.form{grid-template-columns:minmax(0,1fr)}
+.citem{grid-template-columns:64px minmax(0,1fr)}
+.cimg{width:64px;height:64px}
+.cright{grid-column:1 / -1;flex-direction:row;justify-content:space-between;align-items:center}
+.card,.ccard{padding:18px}
+.done{padding:48px 0}
+}
+</style>
+</helmet>
+<div class="site">
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="bar">
+<div class="wrap bar-in">
+<button type="button" class="icon-btn m-only" aria-label="Home" onClick="{{goHome}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.home}}"></path></svg>
+</button>
+<div class="promo">
+<b>Get Upto 65% Off</b>
+<span class="o9 d-only">USE CODE</span>
+<span class="code">SAVE10</span>
+</div>
+<div class="bar-phones d-only">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f27a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.phone}}"></path></svg>
+<a href="tel:+917053838682">Dilip Gupta: 7053838682</a>
+<span class="o5">|</span>
+<a href="tel:+918750284942">Rohit Gupta: 8750284942</a>
+</div>
+<button type="button" class="icon-btn m-only" aria-label="My account" onClick="{{goAccount}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.user}}"></path></svg>
+</button>
+<button type="button" class="icon-btn m-only" aria-label="Cart" onClick="{{goCart}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.cart}}"></path></svg>
+<sc-if value="{{hasCart}}" hint-placeholder-val="{{ false }}"><span class="badge sm">{{cartCount}}</span></sc-if>
+</button>
+</div>
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+<div class="wrap hdr-in">
+<button type="button" class="logo" aria-label="Royal Dark home" onClick="{{goHome}}"><img src="./assets/b12eea7ac84e2b6a263fda0a2ab28e7a.png" alt="Royal Dark"></button>
+<button type="button" class="home-act d-only" onClick="{{goHome}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.home}}"></path></svg>
+<span>Home</span>
+</button>
+<form class="search" role="search" onSubmit="{{doSearch}}" onFocus="{{sugFocus}}" onBlur="{{sugBlur}}">
+<label class="sr" for="catSel">Browse categories</label>
+<select id="catSel" class="search-cat" value="{{catSelect}}" onChange="{{pickCatSelect}}">
+<option value="all">All Categories</option>
+<option value="massagers">Massagers</option>
+<option value="toys">Toys &amp; Accessories</option>
+<option value="cables">Data Cables</option>
+<option value="chargers">Chargers</option>
+<option value="ring-lights">Ring Lights</option>
+<option value="selfie-sticks">Selfie Sticks</option>
+<option value="audio">Audio Devices</option>
+<option value="tripods">Tripods</option>
+<option value="holders">Mobile Holders</option>
+<option value="car">Car Accessories</option>
+<option value="bike">Bike Accessories</option>
+</select>
+<label class="sr" for="q">Search products</label>
+<input id="q" class="search-in" type="search" placeholder="Search products..." autocomplete="off" role="combobox" aria-controls="searchSuggestions" aria-autocomplete="list" aria-expanded="{{showSugg}}" value="{{qDraft}}" onChange="{{setQDraft}}" onKeyDown="{{sugKey}}">
+<button type="submit" class="search-btn" aria-label="Search">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.search}}"></path></svg>
+</button>
+<sc-if value="{{showSugg}}" hint-placeholder-val="{{ false }}">
+<div id="searchSuggestions" class="sugg" role="listbox" aria-label="Search suggestions" onMouseDown="{{keepFocus}}">
+<sc-if value="{{sugHasCats}}" hint-placeholder-val="{{ false }}">
+<p class="sugg-h">Categories</p>
+<sc-for list="{{sugCats}}" as="sc" hint-placeholder-count="2">
+<button type="button" role="option" aria-selected="{{sc.selected}}" class="sugg-item {{sc.active}}" onClick="{{sc.pick}}">
+<span class="sugg-thumb" style="background: {{sc.bg}}"><img class="ph" src="{{sc.img}}" alt=""></span>
+<span class="sugg-meta"><span class="sugg-name">{{sc.name}}</span><span class="sugg-sub">Category</span></span>
+</button>
+</sc-for>
+</sc-if>
+<sc-if value="{{sugHasProducts}}" hint-placeholder-val="{{ false }}">
+<p class="sugg-h">Products</p>
+<sc-for list="{{sugProducts}}" as="sp" hint-placeholder-count="4">
+<button type="button" role="option" aria-selected="{{sp.selected}}" class="sugg-item {{sp.active}}" onClick="{{sp.pick}}">
+<span class="sugg-thumb" style="background: {{sp.bg}}">
+<sc-if value="{{sp.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{sp.img}}" alt=""></sc-if>
+<sc-if value="{{sp.noImg}}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{sp.d}}"></path></svg></sc-if>
+</span>
+<span class="sugg-meta"><span class="sugg-name">{{sp.name}}</span><span class="sugg-sub">{{sp.catName}}</span></span>
+<span class="sugg-price">{{sp.priceText}}</span>
+</button>
+</sc-for>
+</sc-if>
+<sc-if value="{{sugNone}}" hint-placeholder-val="{{ false }}"><p class="sugg-empty">No results for “{{qDraftTrim}}”</p></sc-if>
+<sc-if value="{{sugHasAny}}" hint-placeholder-val="{{ false }}"><button type="submit" class="sugg-all">View all results for “{{qDraftTrim}}”</button></sc-if>
+</div>
+</sc-if>
+</form>
+<button type="button" class="bulk-pill d-only" onClick="{{goBulk}}">
+<span class="wa-dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chat}}"></path></svg></span>
+<span><span class="pill-eye">Need a bulk order?</span><span class="pill-title">View bulk catalog</span></span>
+</button>
+<div class="acts d-only">
+<button type="button" class="act" onClick="{{goAccount}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.user}}"></path></svg>
+<span>Login / Register</span>
+</button>
+<button type="button" class="act" onClick="{{goCart}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.cart}}"></path></svg>
+<span>Cart</span>
+<sc-if value="{{hasCart}}" hint-placeholder-val="{{ false }}"><span class="badge">{{cartCount}}</span></sc-if>
+</button>
+</div>
+</div>
+<div class="wrap phone-row m-only">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.phone}}"></path></svg>
+<a href="tel:+917053838682">Dilip: 7053838682</a>
+<span>|</span>
+<a href="tel:+918750284942">Rohit: 8750284942</a>
+</div>
+</header>
+
+<main class="main">
+
+<!-- ================= HOME ================= -->
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<section class="wrap">
+<div class="cats">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="11">
+<button type="button" class="cat" onClick="{{c.open}}">
+<span class="cat-card" style="background: {{c.bg}}"><img class="ph" src="{{c.img}}" alt="" loading="lazy"></span>
+<span class="cat-lbl">{{c.name}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section class="wrap sec-sm">
+<div class="hero" style="background: {{hero.bg}}">
+<sc-if value="{{hero.isBanner}}" hint-placeholder-val="{{ true }}">
+<button type="button" class="hero-banner" onClick="{{hero.open}}" aria-label="{{hero.label}}"><img src="{{hero.banner}}" alt="{{hero.label}}"></button>
+</sc-if>
+<sc-if value="{{hero.isText}}" hint-placeholder-val="{{ false }}">
+<div class="hero-copy">
+<span class="eyebrow">{{hero.eyebrow}}</span>
+<h1 class="hero-h">{{hero.title}}</h1>
+<p class="hero-p">{{hero.sub}}</p>
+<button type="button" class="hero-cta" onClick="{{hero.open}}">{{hero.cta}}
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.arrow}}"></path></svg>
+</button>
+</div>
+<div class="hero-art"><div class="hero-art-in"><img class="ph" src="{{hero.img}}" alt="{{hero.eyebrow}}"></div></div>
+</sc-if>
+<button type="button" class="hero-nav prev" aria-label="Previous slide" onClick="{{prevSlide}}">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chevLeft}}"></path></svg>
+</button>
+<button type="button" class="hero-nav next" aria-label="Next slide" onClick="{{nextSlide}}">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chevRight}}"></path></svg>
+</button>
+<div class="dots">
+<sc-for list="{{dots}}" as="dt" hint-placeholder-count="3">
+<button type="button" class="dot-btn" aria-label="{{dt.label}}" onClick="{{dt.go}}"><span class="dot" style="width: {{dt.w}}; background: {{dt.bg}}"></span></button>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section class="wrap sec-sm">
+<div class="deals">
+<div class="deals-head">
+<div><span class="deals-eye">This week</span><span class="deals-title">Top Deals</span></div>
+<button type="button" class="deals-all" onClick="{{goDeals}}">View all deals
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.arrow}}"></path></svg>
+</button>
+</div>
+<div class="deals-track">
+<sc-for list="{{deals}}" as="d" hint-placeholder-count="8">
+<button type="button" class="deal" onClick="{{d.open}}">
+<span class="deal-img" style="background: {{d.bg}}">
+<sc-if value="{{d.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{d.img}}" alt="" loading="lazy"></sc-if>
+<sc-if value="{{d.noImg}}" hint-placeholder-val="{{ true }}"><svg class="deal-ic" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{d.d}}"></path></svg></sc-if>
+</span>
+<span class="deal-name">{{d.name}}</span>
+<span class="tag-green">{{d.badge}}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section class="wrap sec">
+<h2 class="sec-title">Top Sellers</h2>
+<div class="grid">
+<sc-for list="{{sellers}}" as="p" hint-placeholder-count="6">
+<div class="pcard">
+<button type="button" class="pimg" style="background: {{p.bg}}" onClick="{{p.open}}" aria-label="View {{p.name}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{p.img}}" alt="{{p.name}}" loading="lazy"></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{ true }}"><svg class="pic" width="76" height="76" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{p.d}}"></path></svg></sc-if>
+</button>
+<button type="button" class="pname" onClick="{{p.open}}">{{p.name}}</button>
+<div class="stars" aria-label="Rated 5 out of 5">
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+</div>
+<p class="price">{{p.priceText}}<span class="mrp">{{p.mrpText}}</span></p>
+<div class="pbtns">
+<button type="button" class="btn-navy" onClick="{{p.add}}">Add to Cart</button>
+<button type="button" class="btn-line" onClick="{{p.buy}}">Buy Now</button>
+</div>
+</div>
+</sc-for>
+</div>
+<div class="center"><button type="button" class="btn-pill" onClick="{{goTop}}">View All
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.arrow}}"></path></svg>
+</button></div>
+</section>
+
+<section class="trust-sec">
+<div class="wrap trust">
+<sc-for list="{{trust}}" as="t" hint-placeholder-count="4">
+<div class="trust-item">
+<span class="ring"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.d}}"></path></svg></span>
+<span><span class="t-title">{{t.title}}</span><span class="t-sub">{{t.sub}}</span></span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section class="wrap sec">
+<h2 class="sec-title">New Arrivals</h2>
+<div class="grid">
+<sc-for list="{{arrivals}}" as="p" hint-placeholder-count="6">
+<div class="pcard">
+<button type="button" class="pimg" style="background: {{p.bg}}" onClick="{{p.open}}" aria-label="View {{p.name}}">
+<span class="new">New</span>
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{p.img}}" alt="{{p.name}}" loading="lazy"></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{ true }}"><svg class="pic" width="76" height="76" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{p.d}}"></path></svg></sc-if>
+</button>
+<button type="button" class="pname" onClick="{{p.open}}">{{p.name}}</button>
+<div class="stars" aria-label="Rated 5 out of 5">
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+</div>
+<p class="price">{{p.priceText}}<span class="mrp">{{p.mrpText}}</span></p>
+<div class="pbtns">
+<button type="button" class="btn-navy" onClick="{{p.add}}">Add to Cart</button>
+<button type="button" class="btn-line" onClick="{{p.buy}}">Buy Now</button>
+</div>
+</div>
+</sc-for>
+</div>
+<div class="center"><button type="button" class="btn-pill" onClick="{{goNew}}">View All
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.arrow}}"></path></svg>
+</button></div>
+</section>
+
+<div class="wave"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 48V20C240 0 480 40 720 28C960 16 1200 44 1440 24V48H0Z" fill="#ffffff" transform="rotate(180 720 24)"></path></svg></div>
+
+<section class="why-sec" id="why-choose">
+<div class="wrap why">
+<div class="why-l">
+<button type="button" class="logo" aria-label="Royal Dark home" onClick="{{goHome}}"><img class="why-logo" src="./assets/b12eea7ac84e2b6a263fda0a2ab28e7a.png" alt="Royal Dark"></button>
+<div class="why-body">
+<h2 class="why-h">Why Choose <span class="sky">Royal Dark?</span></h2>
+<ul class="checks">
+<sc-for list="{{why}}" as="w" hint-placeholder-count="5">
+<li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{w.d}}"></path></svg></span><span>{{w.text}}</span></li>
+</sc-for>
+</ul>
+</div>
+</div>
+<div class="coll">
+<div class="coll-vis">
+<sc-for list="{{collage}}" as="g" hint-placeholder-count="8">
+<button type="button" class="coll-tile" style="background: {{g.bg}}" aria-label="{{g.name}}" onClick="{{g.open}}"><img class="ph" src="{{g.img}}" alt="" loading="lazy"></button>
+</sc-for>
+</div>
+<div class="coll-body">
+<h3 class="coll-h">Complete Accessories Collection</h3>
+<p class="coll-p">Order a single piece for yourself or buy in quantity for your business — genuine stock, fair prices, and fast dispatch.</p>
+<div class="coll-btns">
+<button type="button" class="btn-o" onClick="{{goCatalog}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.boxes}}"></path></svg>
+View Full Catalog</button>
+<button type="button" class="btn-w" onClick="{{goBulk}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.share}}"></path></svg>
+Bulk order? Contact us</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="insta-sec">
+<div class="wrap">
+<div class="panel">
+<div class="panel-head">
+<div><h2 class="panel-h">From Our Instagram</h2><p class="panel-sub">Latest products, deals &amp; behind-the-scenes</p></div>
+<div class="soc">
+<a class="ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.camera}}"></path></svg></a>
+<a class="fb" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+</div>
+</div>
+<div class="igrid">
+<sc-for list="{{insta}}" as="g" hint-placeholder-count="8">
+<a class="itile" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="{{g.caption}}" style="background: {{g.bg}}">
+<img class="ph" src="{{g.img}}" alt="" loading="lazy">
+<span class="icap">{{g.caption}}</span>
+</a>
+</sc-for>
+</div>
+<div class="center"><a class="btn-pill" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">See more on Instagram
+<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.arrow}}"></path></svg>
+</a></div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<!-- ================= CATALOG ================= -->
+<sc-if value="{{isCatalog}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb">
+<button type="button" class="crumb" onClick="{{goHome}}">Home</button><span>/</span>
+<button type="button" class="crumb" onClick="{{goCatalog}}">Catalog</button><span>/</span>
+<span class="crumb-now">{{catTitle}}</span>
+</nav>
+<h1 class="page-h">{{catTitle}}</h1>
+<p class="page-sub">{{catSub}}</p>
+<sc-if value="{{hasSearchNote}}" hint-placeholder-val="{{ false }}"><p class="page-sub" role="status" style="color: #c2410c; font-weight: 600">{{searchNote}}</p></sc-if>
+<div class="cat-layout">
+<aside class="side" aria-label="Filter products">
+<p class="side-h">Collections</p>
+<sc-for list="{{collections}}" as="c" hint-placeholder-count="4">
+<button type="button" class="chip {{c.on}}" onClick="{{c.pick}}"><span>{{c.name}}</span><span class="chip-n">{{c.n}}</span></button>
+</sc-for>
+<p class="side-h">Categories</p>
+<sc-for list="{{catFilters}}" as="c" hint-placeholder-count="11">
+<button type="button" class="chip {{c.on}}" onClick="{{c.pick}}"><span>{{c.name}}</span><span class="chip-n">{{c.n}}</span></button>
+</sc-for>
+</aside>
+<div>
+<div class="toolbar">
+<div class="tool-l">
+<span class="count">{{resultCount}}</span>
+<sc-if value="{{hasQuery}}" hint-placeholder-val="{{ false }}">
+<button type="button" class="qchip" onClick="{{clearQuery}}" aria-label="Clear search">Search: {{q}}
+<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="{{I.x}}"></path></svg>
+</button>
+</sc-if>
+</div>
+<label><span class="sr">Sort products</span>
+<select class="sel" value="{{sort}}" onChange="{{setSort}}">
+<option value="featured">Sort: Featured</option>
+<option value="low">Price: Low to High</option>
+<option value="high">Price: High to Low</option>
+<option value="name">Name: A to Z</option>
+</select>
+</label>
+</div>
+<sc-if value="{{hasResults}}" hint-placeholder-val="{{ true }}">
+<div class="grid g4">
+<sc-for list="{{results}}" as="p" hint-placeholder-count="8">
+<div class="pcard">
+<button type="button" class="pimg" style="background: {{p.bg}}" onClick="{{p.open}}" aria-label="View {{p.name}}">
+<sc-if value="{{p.isNew}}" hint-placeholder-val="{{ false }}"><span class="new">New</span></sc-if>
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{p.img}}" alt="{{p.name}}" loading="lazy"></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{ true }}"><svg class="pic" width="76" height="76" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{p.d}}"></path></svg></sc-if>
+</button>
+<button type="button" class="pname" onClick="{{p.open}}">{{p.name}}</button>
+<div class="stars" aria-label="Rated 5 out of 5">
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+</div>
+<p class="price">{{p.priceText}}<span class="mrp">{{p.mrpText}}</span></p>
+<div class="pbtns">
+<button type="button" class="btn-navy" onClick="{{p.add}}">Add to Cart</button>
+<button type="button" class="btn-line" onClick="{{p.buy}}">Buy Now</button>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{noResults}}" hint-placeholder-val="{{ false }}">
+<div class="empty">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.search}}"></path></svg>
+<h2>No products found</h2>
+<p>Try another search, or browse everything we stock.</p>
+<button type="button" class="btn-navy" onClick="{{clearFilters}}">View all products</button>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ================= PRODUCT ================= -->
+<sc-if value="{{isProduct}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb">
+<button type="button" class="crumb" onClick="{{goHome}}">Home</button><span>/</span>
+<button type="button" class="crumb" onClick="{{pd.openCat}}">{{pd.catName}}</button><span>/</span>
+<span class="crumb-now">{{pd.name}}</span>
+</nav>
+<div class="pd">
+<div>
+<div class="pd-img" style="background: {{pd.bg}}">
+<span class="off">{{pd.off}}</span>
+<sc-if value="{{pd.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{pd.img}}" alt="{{pd.name}}"></sc-if>
+<sc-if value="{{pd.noImg}}" hint-placeholder-val="{{ true }}"><svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{pd.d}}"></path></svg></sc-if>
+</div>
+<div class="thumbs">
+<sc-for list="{{pd.thumbs}}" as="t" hint-placeholder-count="4">
+<span class="thumb" style="background: {{t.bg}}">
+<sc-if value="{{t.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{t.img}}" alt="" loading="lazy"></sc-if>
+<sc-if value="{{t.noImg}}" hint-placeholder-val="{{ true }}"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.d}}"></path></svg></sc-if>
+</span>
+</sc-for>
+</div>
+</div>
+<div class="pd-info">
+<button type="button" class="pd-cat" onClick="{{pd.openCat}}">{{pd.catName}}</button>
+<h1 class="pd-h">{{pd.name}}</h1>
+<div class="stars" aria-label="Rated 5 out of 5">
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{I.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{I.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{I.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{I.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{I.star}}"></path></svg>
+</div>
+<div class="pd-price"><span class="pd-now">{{pd.priceText}}</span><span class="pd-mrp">{{pd.mrpText}}</span><span class="pd-off">{{pd.off}}</span></div>
+<p class="note">Inclusive of all taxes</p>
+<div class="qty-row">
+<span class="lbl">Quantity</span>
+<div class="qty">
+<button type="button" aria-label="Decrease quantity" onClick="{{qtyDec}}">−</button>
+<span aria-live="polite">{{qty}}</span>
+<button type="button" aria-label="Increase quantity" onClick="{{qtyInc}}">+</button>
+</div>
+</div>
+<div class="pd-btns">
+<button type="button" class="btn-navy" onClick="{{pd.addQty}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.cart}}"></path></svg>
+Add to Cart</button>
+<button type="button" class="btn-line" onClick="{{pd.buyQty}}">Buy Now</button>
+</div>
+<a class="btn-wa" href="{{pd.waLink}}" target="_blank" rel="noopener noreferrer" style="height: 46px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chat}}"></path></svg>
+Ask about this product on WhatsApp</a>
+<ul class="checks hl">
+<li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.check}}"></path></svg></span><span>100% genuine product</span></li>
+<li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.check}}"></path></svg></span><span>Fast &amp; safe delivery</span></li>
+<li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.check}}"></path></svg></span><span>Special price on bulk orders — <button type="button" class="inline-link" onClick="{{goBulk}}">get a bulk quote</button></span></li>
+</ul>
+</div>
+</div>
+<section class="sec">
+<h2 class="sec-title">You May Also Like</h2>
+<div class="grid">
+<sc-for list="{{related}}" as="p" hint-placeholder-count="6">
+<div class="pcard">
+<button type="button" class="pimg" style="background: {{p.bg}}" onClick="{{p.open}}" aria-label="View {{p.name}}">
+<sc-if value="{{p.isNew}}" hint-placeholder-val="{{ false }}"><span class="new">New</span></sc-if>
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{p.img}}" alt="{{p.name}}" loading="lazy"></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{ true }}"><svg class="pic" width="76" height="76" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{p.d}}"></path></svg></sc-if>
+</button>
+<button type="button" class="pname" onClick="{{p.open}}">{{p.name}}</button>
+<div class="stars" aria-label="Rated 5 out of 5">
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+<svg class="st" viewBox="0 0 24 24" fill="#f5a524" aria-hidden="true"><path d="{{p.star}}"></path></svg>
+</div>
+<p class="price">{{p.priceText}}<span class="mrp">{{p.mrpText}}</span></p>
+<div class="pbtns">
+<button type="button" class="btn-navy" onClick="{{p.add}}">Add to Cart</button>
+<button type="button" class="btn-line" onClick="{{p.buy}}">Buy Now</button>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+</sc-if>
+
+<!-- ================= CART ================= -->
+<sc-if value="{{isCart}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><button type="button" class="crumb" onClick="{{goHome}}">Home</button><span>/</span><span class="crumb-now">Shopping Cart</span></nav>
+<h1 class="page-h">Shopping Cart</h1>
+<sc-if value="{{cartEmpty}}" hint-placeholder-val="{{ false }}">
+<div class="empty" style="margin: 24px 0 56px">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.cart}}"></path></svg>
+<h2>Your cart is empty</h2>
+<p>Browse our catalog and add products to your cart.</p>
+<button type="button" class="btn-navy" onClick="{{goCatalog}}">Browse Catalog
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.arrow}}"></path></svg>
+</button>
+</div>
+</sc-if>
+<sc-if value="{{hasCart}}" hint-placeholder-val="{{ false }}">
+<div class="cart-layout">
+<div class="citems">
+<sc-for list="{{cartItems}}" as="it" hint-placeholder-count="2">
+<div class="citem">
+<button type="button" class="cimg" style="background: {{it.bg}}" onClick="{{it.open}}" aria-label="View {{it.name}}">
+<sc-if value="{{it.hasImg}}" hint-placeholder-val="{{ false }}"><img class="ph" src="{{it.img}}" alt=""></sc-if>
+<sc-if value="{{it.noImg}}" hint-placeholder-val="{{ true }}"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{it.d}}"></path></svg></sc-if>
+</button>
+<div>
+<button type="button" class="cname" onClick="{{it.open}}">{{it.name}}</button>
+<p class="cmeta">{{it.unitText}}</p>
+</div>
+<div class="cright">
+<div class="qty">
+<button type="button" aria-label="Decrease quantity" onClick="{{it.dec}}">−</button>
+<span>{{it.qty}}</span>
+<button type="button" aria-label="Increase quantity" onClick="{{it.inc}}">+</button>
+</div>
+<span class="cline">{{it.lineText}}</span>
+<button type="button" class="rm" onClick="{{it.remove}}">Remove</button>
+</div>
+</div>
+</sc-for>
+<div><button type="button" class="btn-pill" onClick="{{goCatalog}}">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chevLeft}}"></path></svg>
+Continue shopping</button></div>
+</div>
+<div class="summary">
+<h2>Order Summary</h2>
+<div class="srow"><span>Items ({{cartCount}})</span><span>{{subText}}</span></div>
+<sc-if value="{{hasDiscount}}" hint-placeholder-val="{{ false }}"><div class="srow"><span>Coupon SAVE10</span><span style="color: #1f7a3f">− {{discText}}</span></div></sc-if>
+<div class="srow"><span>Delivery</span><span class="muted">Confirmed on WhatsApp</span></div>
+<div class="stotal"><span>Total</span><span>{{totalText}}</span></div>
+<form class="coupon" onSubmit="{{applyCoupon}}">
+<label class="sr" for="coupon">Coupon code</label>
+<input id="coupon" class="field-in" type="text" placeholder="Coupon code" value="{{couponDraft}}" onChange="{{setCouponDraft}}">
+<button type="submit" class="btn-line" style="height: 42px">Apply</button>
+</form>
+<sc-if value="{{hasCouponMsg}}" hint-placeholder-val="{{ false }}"><p class="msg" style="color: {{couponColor}}">{{couponMsg}}</p></sc-if>
+<button type="button" class="btn-o full-btn" onClick="{{goCheckout}}">Proceed to Checkout
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.arrow}}"></path></svg>
+</button>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- ================= CHECKOUT ================= -->
+<sc-if value="{{isCheckout}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><button type="button" class="crumb" onClick="{{goHome}}">Home</button><span>/</span><button type="button" class="crumb" onClick="{{goCart}}">Cart</button><span>/</span><span class="crumb-now">Checkout</span></nav>
+<h1 class="page-h">Checkout</h1>
+<p class="page-sub">Your order is sent to us on WhatsApp — we confirm stock and delivery before dispatch.</p>
+<sc-if value="{{cartEmpty}}" hint-placeholder-val="{{ false }}">
+<div class="empty" style="margin: 24px 0 56px"><h2>Your cart is empty</h2><p>Add products before checking out.</p><button type="button" class="btn-navy" onClick="{{goCatalog}}">Browse Catalog</button></div>
+</sc-if>
+<sc-if value="{{hasCart}}" hint-placeholder-val="{{ false }}">
+<div class="cart-layout">
+<div class="stack">
+<div class="card">
+<h2 class="card-h">Delivery details</h2>
+<div class="form">
+<div class="field"><label class="lbl" for="coName">Full name</label><input id="coName" class="field-in" type="text" autocomplete="name" value="{{form.name}}" onChange="{{fName}}"></div>
+<div class="field"><label class="lbl" for="coPhone">Phone number</label><input id="coPhone" class="field-in" type="tel" autocomplete="tel" placeholder="10-digit mobile" value="{{form.phone}}" onChange="{{fPhone}}"></div>
+<div class="field full"><label class="lbl" for="coAddr">Address</label><input id="coAddr" class="field-in" type="text" autocomplete="street-address" placeholder="House no., street, area" value="{{form.address}}" onChange="{{fAddress}}"></div>
+<div class="field"><label class="lbl" for="coCity">City</label><input id="coCity" class="field-in" type="text" autocomplete="address-level2" value="{{form.city}}" onChange="{{fCity}}"></div>
+<div class="field"><label class="lbl" for="coPin">Pincode</label><input id="coPin" class="field-in" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="6 digits" value="{{form.pin}}" onChange="{{fPin}}"></div>
+<div class="field full"><label class="lbl" for="coNotes">Order notes (optional)</label><textarea id="coNotes" class="field-in" rows="3" value="{{form.notes}}" onChange="{{fNotes}}"></textarea></div>
+</div>
+</div>
+<div class="card">
+<h2 class="card-h">Payment</h2>
+<div class="radios">
+<label class="radio"><input type="radio" name="pay" value="cod" checked="{{payCod}}" onChange="{{pickCod}}"><span><b>Cash on Delivery</b><small>Pay when your order arrives</small></span></label>
+<label class="radio"><input type="radio" name="pay" value="upi" checked="{{payUpi}}" onChange="{{pickUpi}}"><span><b>UPI after confirmation</b><small>We share payment details on WhatsApp</small></span></label>
+</div>
+</div>
+</div>
+<div class="summary">
+<h2>Your Order</h2>
+<sc-for list="{{cartItems}}" as="it" hint-placeholder-count="2">
+<div class="mini"><span>{{it.name}} × {{it.qty}}</span><b>{{it.lineText}}</b></div>
+</sc-for>
+<div class="srow" style="border-top: 1px solid #dbe4ec; padding-top: 12px"><span>Subtotal</span><span>{{subText}}</span></div>
+<sc-if value="{{hasDiscount}}" hint-placeholder-val="{{ false }}"><div class="srow"><span>Coupon SAVE10</span><span style="color: #1f7a3f">− {{discText}}</span></div></sc-if>
+<div class="stotal"><span>Total</span><span>{{totalText}}</span></div>
+<sc-if value="{{canOrder}}" hint-placeholder-val="{{ false }}">
+<a class="btn-wa full-btn" href="{{waOrder}}" target="_blank" rel="noopener noreferrer" onClick="{{placeOrder}}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chat}}"></path></svg>
+Place Order on WhatsApp</a>
+</sc-if>
+<sc-if value="{{cantOrder}}" hint-placeholder-val="{{ true }}">
+<button type="button" class="btn-wa full-btn" disabled="{{ true }}">Place Order on WhatsApp</button>
+<p class="hint">{{orderHint}}</p>
+</sc-if>
+<p class="note" style="margin-top: 0">Prefer to call? Dilip: <a href="tel:+917053838682">7053838682</a> · Rohit: <a href="tel:+918750284942">8750284942</a></p>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- ================= ORDER SENT ================= -->
+<sc-if value="{{isSuccess}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<div class="done">
+<span class="big-ring"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1f7a3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.check}}"></path></svg></span>
+<h1 class="page-h">Order sent on WhatsApp</h1>
+<p>Your order for {{lastCount}} item(s), total {{lastTotal}}, has been sent to Royal Dark. Dilip or Rohit will confirm stock and delivery with you shortly.</p>
+<p class="note" style="margin-top: 0">WhatsApp didn’t open? <a href="{{lastLink}}" target="_blank" rel="noopener noreferrer" style="color: #1a6aa8; font-weight: 600">Send the order again</a></p>
+<div class="btn-row">
+<button type="button" class="btn-navy" onClick="{{goCatalog}}">Continue Shopping</button>
+<a class="btn-line" href="tel:+917053838682">Call 7053838682</a>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ================= CONTACT ================= -->
+<sc-if value="{{isContact}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><button type="button" class="crumb" onClick="{{goHome}}">Home</button><span>/</span><span class="crumb-now">Contact Us</span></nav>
+<h1 class="page-h">Contact Us</h1>
+<p class="page-sub">Call, WhatsApp or visit us — we reply fast.</p>
+<div class="ccards">
+<div class="ccard">
+<span class="ring"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.phone}}"></path></svg></span>
+<h2>Dilip Gupta</h2>
+<p>7053838682</p>
+<div class="cbtns"><a class="btn-navy" href="tel:+917053838682">Call</a><a class="btn-wa" href="{{waDilip}}" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+</div>
+<div class="ccard">
+<span class="ring"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.phone}}"></path></svg></span>
+<h2>Rohit Gupta</h2>
+<p>8750284942</p>
+<div class="cbtns"><a class="btn-navy" href="tel:+918750284942">Call</a><a class="btn-wa" href="{{waRohit}}" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+</div>
+<div class="ccard">
+<span class="ring"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.pin}}"></path></svg></span>
+<h2>Visit Us</h2>
+<p>283/A3, Than Singh Nagar, Anand Parbat, Near CNG Pump, New Delhi - 110005</p>
+<div class="cbtns"><a class="btn-line" href="{{mapsLink}}" target="_blank" rel="noopener noreferrer">Open in Google Maps</a></div>
+</div>
+</div>
+<div class="two">
+<div class="card">
+<h2 class="card-h">Send us a message</h2>
+<div class="form">
+<div class="field"><label class="lbl" for="ctName">Your name</label><input id="ctName" class="field-in" type="text" autocomplete="name" value="{{contact.name}}" onChange="{{cName}}"></div>
+<div class="field"><label class="lbl" for="ctPhone">Phone (optional)</label><input id="ctPhone" class="field-in" type="tel" autocomplete="tel" value="{{contact.phone}}" onChange="{{cPhone}}"></div>
+<div class="field full"><label class="lbl" for="ctMsg">Message</label><textarea id="ctMsg" class="field-in" rows="4" value="{{contact.msg}}" onChange="{{cMsg}}"></textarea></div>
+<div class="field full">
+<sc-if value="{{canContact}}" hint-placeholder-val="{{ false }}"><a class="btn-wa full-btn" href="{{waContact}}" target="_blank" rel="noopener noreferrer">Send on WhatsApp</a></sc-if>
+<sc-if value="{{cantContact}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn-wa full-btn" disabled="{{ true }}">Send on WhatsApp</button><p class="hint" style="margin-top: 6px">Add your name and a message.</p></sc-if>
+</div>
+</div>
+</div>
+<div class="map">
+<span class="ring"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.pin}}"></path></svg></span>
+<h2 class="card-h" style="margin: 0">Royal Dark, Anand Parbat</h2>
+<p>283/A3, Than Singh Nagar, Anand Parbat, Near CNG Pump, New Delhi - 110005</p>
+<a class="btn-navy" href="{{mapsLink}}" target="_blank" rel="noopener noreferrer">Get Directions</a>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ================= BULK ORDERS ================= -->
+<sc-if value="{{isBulk}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><button type="button" class="crumb" onClick="{{goHome}}">Home</button><span>/</span><span class="crumb-now">Bulk Orders</span></nav>
+<h1 class="page-h">Bulk Orders</h1>
+<p class="page-sub">Special rates on large quantities for shops and resellers.</p>
+<div class="two">
+<div class="card">
+<h2 class="card-h">Why buy in bulk from Royal Dark</h2>
+<ul class="checks">
+<sc-for list="{{bulkPoints}}" as="w" hint-placeholder-count="5">
+<li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{w.d}}"></path></svg></span><span>{{w.text}}</span></li>
+</sc-for>
+</ul>
+<h3 class="lbl" style="margin: 24px 0 12px">Browse by category</h3>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="11">
+<button type="button" class="chip" style="border: 1.5px solid #dbe4ec; border-radius: 999px; padding: 8px 14px" onClick="{{c.open}}">{{c.name}}</button>
+</sc-for>
+</div>
+</div>
+<div class="card">
+<h2 class="card-h">Request a bulk quote</h2>
+<div class="form">
+<div class="field"><label class="lbl" for="bkShop">Shop / business name</label><input id="bkShop" class="field-in" type="text" value="{{bulk.shop}}" onChange="{{bShop}}"></div>
+<div class="field"><label class="lbl" for="bkPhone">Phone</label><input id="bkPhone" class="field-in" type="tel" autocomplete="tel" value="{{bulk.phone}}" onChange="{{bPhone}}"></div>
+<div class="field full"><label class="lbl" for="bkCity">City</label><input id="bkCity" class="field-in" type="text" value="{{bulk.city}}" onChange="{{bCity}}"></div>
+<div class="field full"><label class="lbl" for="bkItems">Products &amp; quantities</label><textarea id="bkItems" class="field-in" rows="4" placeholder="e.g. 50 × K17 Mobile Holder, 20 × Fast Charger 20W" value="{{bulk.items}}" onChange="{{bItems}}"></textarea></div>
+<div class="field full">
+<sc-if value="{{canBulk}}" hint-placeholder-val="{{ false }}"><a class="btn-wa full-btn" href="{{waBulk}}" target="_blank" rel="noopener noreferrer">Send Quote Request on WhatsApp</a></sc-if>
+<sc-if value="{{cantBulk}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn-wa full-btn" disabled="{{ true }}">Send Quote Request on WhatsApp</button><p class="hint" style="margin-top: 6px">Add your shop name and the products you need.</p></sc-if>
+</div>
+<p class="note full" style="margin-top: 0; grid-column: 1 / -1">Or call Dilip: <a href="tel:+917053838682">7053838682</a> · Rohit: <a href="tel:+918750284942">8750284942</a></p>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ================= ABOUT ================= -->
+<sc-if value="{{isAbout}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><button type="button" class="crumb" onClick="{{goHome}}">Home</button><span>/</span><span class="crumb-now">About Us</span></nav>
+<div class="two">
+<div class="why-l" style="align-items: flex-start">
+<img class="why-logo" src="./assets/b12eea7ac84e2b6a263fda0a2ab28e7a.png" alt="Royal Dark">
+<h1 class="page-h">About Royal Dark</h1>
+<p class="page-sub" style="font-size: 15px; line-height: 1.7">Your trusted store for mobile accessories and smart gadgets — shop single pieces or order in bulk.</p>
+<div class="btn-row" style="justify-content: flex-start"><button type="button" class="btn-navy" onClick="{{goCatalog}}">View Full Catalog</button><button type="button" class="btn-line" onClick="{{goContact}}">Contact Us</button></div>
+</div>
+<div class="card">
+<h2 class="why-h" style="margin-bottom: 16px">Why Choose <span class="sky">Royal Dark?</span></h2>
+<ul class="checks">
+<sc-for list="{{why}}" as="w" hint-placeholder-count="5">
+<li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{w.d}}"></path></svg></span><span>{{w.text}}</span></li>
+</sc-for>
+</ul>
+</div>
+</div>
+</div>
+<section class="trust-sec" style="margin-bottom: 0">
+<div class="wrap trust">
+<sc-for list="{{trust}}" as="t" hint-placeholder-count="4">
+<div class="trust-item">
+<span class="ring"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a6aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.d}}"></path></svg></span>
+<span><span class="t-title">{{t.title}}</span><span class="t-sub">{{t.sub}}</span></span>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<!-- ================= ACCOUNT ================= -->
+<sc-if value="{{isAccount}}" hint-placeholder-val="{{ false }}">
+<div class="wrap narrow">
+<div class="card">
+<h1 class="page-h" style="margin-top: 0">My Account</h1>
+<div class="tabs" role="tablist" aria-label="Account options">
+<button type="button" role="tab" class="tab {{tabLoginOn}}" aria-selected="{{isLoginTab}}" onClick="{{tabLogin}}">Sign In</button>
+<button type="button" role="tab" class="tab {{tabRegOn}}" aria-selected="{{isRegTab}}" onClick="{{tabReg}}">Create Account</button>
+</div>
+<sc-if value="{{isLoginTab}}" hint-placeholder-val="{{ true }}">
+<form class="form" onSubmit="{{authSubmit}}">
+<div class="field full"><label class="lbl" for="lgEmail">Email address</label><input id="lgEmail" class="field-in" type="email" autocomplete="username" placeholder="you@example.com" required=""></div>
+<div class="field full"><label class="lbl" for="lgPass">Password</label><input id="lgPass" class="field-in" type="password" autocomplete="current-password" required=""></div>
+<div class="field full"><button type="submit" class="btn-navy full-btn">Sign In</button></div>
+</form>
+</sc-if>
+<sc-if value="{{isRegTab}}" hint-placeholder-val="{{ false }}">
+<form class="form" onSubmit="{{authSubmit}}">
+<div class="field full"><label class="lbl" for="rgName">Full name</label><input id="rgName" class="field-in" type="text" autocomplete="name" required=""></div>
+<div class="field full"><label class="lbl" for="rgEmail">Email address</label><input id="rgEmail" class="field-in" type="email" autocomplete="username" required=""></div>
+<div class="field"><label class="lbl" for="rgPass">Password</label><input id="rgPass" class="field-in" type="password" autocomplete="new-password" required=""></div>
+<div class="field"><label class="lbl" for="rgPass2">Confirm password</label><input id="rgPass2" class="field-in" type="password" autocomplete="new-password" required=""></div>
+<div class="field full"><button type="submit" class="btn-navy full-btn">Create Account</button></div>
+</form>
+</sc-if>
+<sc-if value="{{hasAuthMsg}}" hint-placeholder-val="{{ false }}"><p class="info" role="status">{{authMsg}}</p></sc-if>
+</div>
+</div>
+</sc-if>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+<div class="wrap foot-grid">
+<div class="foot-col foot-brand">
+<button type="button" class="foot-logo" aria-label="Royal Dark home" onClick="{{goHome}}"><img src="./assets/b12eea7ac84e2b6a263fda0a2ab28e7a.png" alt="Royal Dark"></button>
+<p style="line-height: 1.7">Your trusted store for mobile accessories and smart gadgets — shop single pieces or order in bulk.</p>
+<ul class="clist">
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f27a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.phone}}"></path></svg><span>Dilip Gupta: <a href="tel:+917053838682">7053838682</a></span></li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f27a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.phone}}"></path></svg><span>Rohit Gupta: <a href="tel:+918750284942">8750284942</a></span></li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f27a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.pin}}"></path></svg><span>283/A3, Than Singh Nagar, Anand Parbat, Near CNG Pump, New Delhi - 110005</span></li>
+</ul>
+<div class="fsoc">
+<a href="{{waDilip}}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chat}}"></path></svg></a>
+<a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.camera}}"></path></svg></a>
+<a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+</div>
+</div>
+<div class="foot-col">
+<p class="foot-h">Quick Links</p>
+<ul class="flinks">
+<sc-for list="{{quick}}" as="l" hint-placeholder-count="6"><li><button type="button" class="flink" onClick="{{l.go}}">{{l.name}}</button></li></sc-for>
+</ul>
+</div>
+<div class="foot-col">
+<p class="foot-h">Categories</p>
+<ul class="flinks">
+<sc-for list="{{footCats}}" as="l" hint-placeholder-count="8"><li><button type="button" class="flink" onClick="{{l.open}}">{{l.name}}</button></li></sc-for>
+</ul>
+</div>
+<div class="foot-col">
+<p class="foot-h">Important</p>
+<ul class="flinks">
+<li><button type="button" class="flink" onClick="{{goBulk}}"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f27a3d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chevRight}}"></path></svg>Bulk orders available</button></li>
+<li class="flink"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chevRight}}"></path></svg>Special rates on large quantities</li>
+<li class="flink"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chevRight}}"></path></svg>100% genuine products</li>
+</ul>
+<button type="button" class="foot-pill" onClick="{{goBulk}}">
+<span class="wa-dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.chat}}"></path></svg></span>
+<span><span class="pill-eye" style="color: rgba(255,255,255,0.7)">Need a bulk order?</span><span class="pill-title" style="color: #ffffff">View bulk catalog</span></span>
+</button>
+</div>
+</div>
+<div class="foot-bot">
+<div class="wrap foot-bot-in">
+<p>© 2026 Royal Dark. All Rights Reserved.</p>
+<p>Designed with <svg width="11" height="11" viewBox="0 0 24 24" fill="#e53935" aria-hidden="true"><path d="{{I.heart}}"></path></svg> for Our Customers</p>
+</div>
+</div>
+</footer>
+
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}">
+<div class="toast" role="status">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ee7a0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{I.check}}"></path></svg>
+<span>{{toast}}</span>
+<button type="button" onClick="{{goCart}}">View cart</button>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 'home', cat: 'all', q: '', qDraft: '', pid: null, qty: 1, sort: 'featured',
+      cart: [], coupon: '', couponDraft: '', couponMsg: '', couponOk: false,
+      sugOpen: false, sugIdx: -1,
+      slide: 0, toast: '', authTab: 'login', authMsg: '', pay: 'cod', lastOrder: null,
+      form: { name: '', phone: '', address: '', city: 'New Delhi', pin: '', notes: '' },
+      contact: { name: '', phone: '', msg: '' },
+      bulk: { shop: '', phone: '', city: '', items: '' }
+    };
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      if (this.state.page === 'home') this.setState({ slide: (this.state.slide + 1) % 3 });
+    }, 5000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    clearTimeout(this.toastT);
+  }
+  data() {
+    if (this._d) return this._d;
+    const I = {
+      home: 'M3 11 12 4l9 7M5 10v10h14V10M10 20v-6h4v6',
+      user: 'M8 8a4 4 0 1 0 8 0a4 4 0 1 0-8 0M4 21a8 8 0 0 1 16 0',
+      cart: 'M3 4h2l2.4 11h10.2L20 8H6.2M8 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0M16 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0',
+      search: 'M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0M21 21l-6-6',
+      chevLeft: 'M15 6l-6 6 6 6',
+      chevRight: 'M9 6l6 6-6 6',
+      arrow: 'M5 12h14M13 6l6 6-6 6',
+      x: 'M6 6l12 12M18 6 6 18',
+      chat: 'M4 5h16v11H9l-5 4z',
+      star: 'M12 2.8l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.1l-5.6 2.9 1.1-6.2L3 9.4l6.2-.9z',
+      award: 'M7 9a5 5 0 1 0 10 0a5 5 0 1 0-10 0M8.5 13 7 21l5-3 5 3-1.5-8',
+      userCheck: 'M5 7a4 4 0 1 0 8 0a4 4 0 1 0-8 0M2 21a7 7 0 0 1 14 0M16 11l2 2 4-4',
+      truck: 'M2 6h11v10H2zM13 9h4l4 4v3h-8M4 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0M15 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0',
+      bell: 'M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4',
+      check: 'M5 12l5 5 9-10',
+      camera: 'M4 7h4l2-3h4l2 3h4v13H4zM8 13a4 4 0 1 0 8 0a4 4 0 1 0-8 0',
+      share: 'M3 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0M15 6a3 3 0 1 0 6 0a3 3 0 1 0-6 0M15 18a3 3 0 1 0 6 0a3 3 0 1 0-6 0M8.6 13.5l6.8 3.5M15.4 7l-6.8 3.5',
+      boxes: 'M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10',
+      heart: 'M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z',
+      phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2',
+      pin: 'M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zM9.5 10a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0',
+      tripod: 'M9 3h6v5H9zM12 8v13M12 11l-6 10M12 11l6 10',
+      mic: 'M9 6a3 3 0 0 1 6 0v6a3 3 0 0 1-6 0zM5 11a7 7 0 0 0 14 0M12 18v3M9 21h6',
+      holder: 'M8 3h8v12H8zM12 15v3M7 21h10M9 18h6',
+      selfie: 'M9 2h6v8H9zM12 10v11M10 21h4M12 6h.01',
+      ring: 'M4 10a8 8 0 1 0 16 0a8 8 0 1 0-16 0M8 10a4 4 0 1 0 8 0a4 4 0 1 0-8 0M12 18v4M9 22h6',
+      pouch: 'M7 3h10a1 1 0 0 1 1 1v15a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a1 1 0 0 1 1-1zM6 7h12M10 17h4',
+      cable: 'M7 2v4M11 2v4M5 6h8v4a4 4 0 0 1-8 0zM9 14v2a4 4 0 0 0 8 0V6h2',
+      charger: 'M9 2v5M15 2v5M6 7h12v5a6 6 0 0 1-12 0zM12 18v4',
+      earbuds: 'M7 4a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h1V4zM17 4a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1V4zM8 12v7M16 12v7',
+      watch: 'M8 7h8v10H8zM9 7l1-4h4l1 4M9 17l1 4h4l1-4M12 10v2l1 1',
+      massager: 'M8 3h8v8H8zM12 11v4M10 15h4v6h-4z',
+      toy: 'M6 8h12a4 4 0 0 1 4 4v1a3.5 3.5 0 0 1-6.5 1.8L15 14H9l-.5.8A3.5 3.5 0 0 1 2 13v-1a4 4 0 0 1 4-4zM7 10.5v3M5.5 12h3M16 11h.01M18 13h.01',
+      speaker: 'M6 2h12v20H6zM9 14a3 3 0 1 0 6 0a3 3 0 1 0-6 0M12 6h.01',
+      car: 'M4 16h16v-4l-2.5-5h-11L4 12zM4 16v3M20 16v3M7.5 13h.01M16.5 13h.01M4 12h16',
+      bike: 'M2 17a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0-7 0M15 17a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0-7 0M5.5 17 9 9h5l4.5 8M9 9 7.5 6H10M14 9l1-3h3'
+    };
+    const TINTS = ['#e6f0f8', '#fdece2', '#ecebfa', '#e4f4ec', '#fbf3dc'];
+    const IMG = {
+      massager: './assets/2ff939322d8b14ed905bc4c085c3027b.jpg',
+      drone: './assets/f3759c8c38680c66cc3ddddff405a434.jpg',
+      cable: './assets/953ca1df5a1a8970f40ffece9c98cfc3.jpg',
+      charger: './assets/3ede23597c0663c40a4b156bc9e4ef57.jpg',
+      selfie: './assets/ca8fe1cfd81d2926c676bce7ad923fa9.jpg',
+      ring: './assets/4454a57ef314540b6793ba6838a6ca19.jpg',
+      headphones: './assets/c85365b3aa20c3117fe0927e4eca5601.jpg',
+      tripod: './assets/17b55cb04a46cacf51081e21d5664df4.jpg',
+      stand: './assets/4907030b2b6dfc0057f3d6a4c4154832.jpg',
+      car: './assets/5a6f03193cd2e40d18e96f1d9d17467f.jpg',
+      bike: './assets/1ced9279c4b526073c3f4214471ed8f3.jpg'
+    };
+    const CATS = [
+      { slug: 'massagers', name: 'Massagers', k: 'massager', im: 'massager' },
+      { slug: 'toys', name: 'Toys & Accessories', k: 'toy', im: 'drone' },
+      { slug: 'cables', name: 'Data Cables', k: 'cable', im: 'cable' },
+      { slug: 'chargers', name: 'Chargers', k: 'charger', im: 'charger' },
+      { slug: 'ring-lights', name: 'Ring Lights', k: 'ring', im: 'ring' },
+      { slug: 'selfie-sticks', name: 'Selfie Sticks', k: 'selfie', im: 'selfie' },
+      { slug: 'audio', name: 'Audio Devices', k: 'speaker', im: 'headphones' },
+      { slug: 'tripods', name: 'Tripods', k: 'tripod', im: 'tripod' },
+      { slug: 'holders', name: 'Mobile Holders', k: 'holder', im: 'stand' },
+      { slug: 'car', name: 'Car Accessories', k: 'car', im: 'car' },
+      { slug: 'bike', name: 'Bike Accessories', k: 'bike', im: 'bike' }
+    ];
+    const PRODUCTS = [
+      { id: 'a1588', name: 'A1588 Tripod', cat: 'tripods', price: 1200, mrp: 1999, k: 'tripod', im: 'tripod', tags: ['top'] },
+      { id: 'f11', name: 'F11-2 Wireless Microphone', cat: 'audio', price: 1099, mrp: 1799, k: 'mic', tags: ['top'] },
+      { id: 'k17', name: 'K17 Mobile Holder', cat: 'holders', price: 499, mrp: 899, k: 'holder', im: 'stand', tags: ['top', 'deals'] },
+      { id: 'k8', name: 'K8 Wireless Microphone', cat: 'audio', price: 999, mrp: 1599, k: 'mic', tags: ['top'] },
+      { id: 'k9', name: 'K9 Mic', cat: 'audio', price: 999, mrp: 1499, k: 'mic', tags: ['top'] },
+      { id: 'q08', name: 'Q08 Wireless Microphone', cat: 'audio', price: 999, mrp: 1599, k: 'mic', tags: ['top'] },
+      { id: 'r16', name: 'R16 Selfie Stick', cat: 'selfie-sticks', price: 1000, mrp: 1599, k: 'selfie', im: 'selfie', tags: ['new'] },
+      { id: 't3366', name: '3366 Tripod', cat: 'tripods', price: 999, mrp: 1499, k: 'tripod', im: 'tripod', tags: ['new'] },
+      { id: 't21', name: '2.1 Tripod (7 feet)', cat: 'tripods', price: 499, mrp: 999, k: 'tripod', im: 'tripod', tags: ['new'] },
+      { id: 't9', name: '9 Feet Tripod', cat: 'tripods', price: 999, mrp: 1799, k: 'tripod', im: 'tripod', tags: ['new'] },
+      { id: 'rgb12', name: '12 inch RGB Ring Light', cat: 'ring-lights', price: 499, mrp: 999, k: 'ring', im: 'ring', tags: ['new'] },
+      { id: 'pouch', name: 'Mobile Waterproof Pouch', cat: 'holders', price: 49, mrp: 99, k: 'pouch', tags: ['new'] },
+      { id: 'ch20', name: 'Fast Charger 20W', cat: 'chargers', price: 399, mrp: 699, k: 'charger', im: 'charger', tags: ['deals'] },
+      { id: 'anc', name: 'ANC Earbuds', cat: 'audio', price: 1299, mrp: 2499, k: 'earbuds', tags: ['deals'] },
+      { id: 'ebpro', name: 'Wireless Earbuds Pro', cat: 'audio', price: 1499, mrp: 2999, k: 'earbuds', tags: ['deals'] },
+      { id: 'amoled', name: 'AMOLED Smartwatch', cat: 'watches', price: 11799, mrp: 14999, k: 'watch', tags: ['deals'] },
+      { id: 'classic', name: 'Classic Smartwatch 46mm', cat: 'watches', price: 2499, mrp: 4999, k: 'watch', tags: ['deals'] },
+      { id: 'cable', name: 'Braided Type-C Cable', cat: 'cables', price: 149, mrp: 299, k: 'cable', im: 'cable', tags: ['deals'] },
+      { id: 'car65', name: 'Dual Port Car Charger 65W', cat: 'car', price: 599, mrp: 999, k: 'car', im: 'car', tags: ['deals'] },
+      { id: 'gun', name: 'Mini Massage Gun', cat: 'massagers', price: 1499, mrp: 2499, k: 'massager', im: 'massager', tags: [] },
+      { id: 'drone', name: 'Foldable Camera Drone', cat: 'toys', price: 2499, mrp: 3999, k: 'toy', im: 'drone', tags: [] },
+      { id: 'walkie', name: 'Video Walkie-Talkie Toy', cat: 'toys', price: 899, mrp: 1499, k: 'toy', tags: [] },
+      { id: 'headph', name: 'Wireless Headphones', cat: 'audio', price: 1499, mrp: 2999, k: 'speaker', im: 'headphones', tags: [] },
+      { id: 'y17', name: 'Y17 Selfie Stick', cat: 'selfie-sticks', price: 699, mrp: 1199, k: 'selfie', im: 'selfie', tags: [] },
+      { id: 'y12', name: 'Y12 AI Tracking Selfie Stick Tripod', cat: 'selfie-sticks', price: 1999, mrp: 2999, k: 'selfie', im: 'selfie', tags: [] },
+      { id: 'bikeh', name: 'Bike Mobile Holder', cat: 'bike', price: 349, mrp: 699, k: 'bike', im: 'bike', tags: [] }
+    ];
+    const byId = {};
+    PRODUCTS.forEach((p, i) => { p.bg = TINTS[i % TINTS.length]; p.d = I[p.k]; p.img = IMG[p.im] || ''; p.idx = i; byId[p.id] = p; });
+    const catName = { watches: 'Smartwatches' };
+    CATS.forEach((c) => { catName[c.slug] = c.name; });
+    this._d = { I, IMG, TINTS, CATS, PRODUCTS, byId, catName };
+    return this._d;
+  }
+  go(page, extra) {
+    this.setState(Object.assign({ page: page }, extra || {}));
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+  addToCart(id, n, silent) {
+    const cart = this.state.cart.slice();
+    const i = cart.findIndex((x) => x.id === id);
+    if (i >= 0) cart[i] = { id: id, qty: cart[i].qty + n };
+    else cart.push({ id: id, qty: n });
+    const upd = { cart: cart };
+    if (!silent) {
+      upd.toast = this.data().byId[id].name + ' added to cart';
+      clearTimeout(this.toastT);
+      this.toastT = setTimeout(() => this.setState({ toast: '' }), 2400);
+    }
+    this.setState(upd);
+  }
+  setQty(id, q) {
+    let cart = this.state.cart.map((x) => (x.id === id ? { id: id, qty: q } : x));
+    cart = cart.filter((x) => x.qty > 0);
+    this.setState({ cart: cart });
+  }
+  renderVals() {
+    const { I, IMG, TINTS, CATS, PRODUCTS, byId, catName } = this.data();
+    const s = this.state;
+    const fmt = (n) => '₹' + Number(n).toLocaleString('en-IN');
+    const wa = (num, t) => 'https://wa.me/' + num + '?text=' + encodeURIComponent(t);
+    const offOf = (p) => Math.round((1 - p.price / p.mrp) * 100) + '% off';
+    const vm = (p) => ({
+      id: p.id, name: p.name, d: p.d, bg: p.bg, star: I.star,
+      img: p.img, hasImg: !!p.img, noImg: !p.img,
+      priceText: fmt(p.price), mrpText: fmt(p.mrp), off: offOf(p),
+      isNew: p.tags.indexOf('new') >= 0,
+      open: () => this.go('product', { pid: p.id, qty: 1 }),
+      add: () => this.addToCart(p.id, 1),
+      buy: () => { this.addToCart(p.id, 1, true); this.go('cart'); }
+    });
+    const openCat = (key) => () => this.go('catalog', { cat: key, q: '', qDraft: '' });
+    const setF = (group, key) => (e) => {
+      const v = e.target.value;
+      const next = Object.assign({}, this.state[group]);
+      next[key] = v;
+      const upd = {};
+      upd[group] = next;
+      this.setState(upd);
+    };
+
+    // Home
+    const cats = CATS.map((c, i) => ({ slug: c.slug, name: c.name, d: I[c.k], img: IMG[c.im], bg: TINTS[i % TINTS.length], open: openCat(c.slug) }));
+    const slides = [
+      { eyebrow: 'Tripods', title: 'Steady shots,\nfrom every angle', sub: 'Tripods from 2.1 to 9 feet — built for creators and counters alike.', cta: 'Shop Tripods', img: IMG.tripod, bg: '#0a2540', open: openCat('tripods') },
+      { eyebrow: 'Full catalog', title: 'Everything your\ncounter needs', sub: 'Chargers, cables, holders and audio — single pieces or bulk.', cta: 'Browse Catalog', img: IMG.ring, bg: '#163a63', open: openCat('all') },
+      { isBanner: true, isText: false, banner: './assets/4fdc95d8a70f94b223bfd19c40551999.jpg', label: 'Wireless microphones and earbuds — shop Audio Devices', bg: '#f6e9dc', dotOff: 'rgba(10,37,64,0.3)', open: openCat('audio') }
+    ].map((x) => Object.assign({ isBanner: false, isText: true }, x));
+    const idx = s.slide % slides.length;
+    const goSlide = (i) => this.setState({ slide: (i + slides.length) % slides.length });
+    const dots = slides.map((x, i) => ({ label: 'Go to slide ' + (i + 1), go: () => goSlide(i), w: i === idx ? '28px' : '10px', bg: i === idx ? '#f27a3d' : (slides[idx].dotOff || 'rgba(255,255,255,0.5)') }));
+    const withTag = (t) => PRODUCTS.filter((p) => p.tags.indexOf(t) >= 0);
+    const deals = withTag('deals').map((p) => Object.assign(vm(p), { badge: offOf(p).replace('off', 'Off') }));
+    const sellers = withTag('top').map(vm);
+    const arrivals = withTag('new').map(vm);
+    const trust = [[I.award, '100% Genuine', 'Quality Products'], [I.userCheck, 'Trusted by', 'Buyers'], [I.truck, 'Fast & Safe', 'Delivery'], [I.bell, 'Regular Updates', '& New Deals']].map((t) => ({ d: t[0], title: t[1], sub: t[2] }));
+    const why = ['Wide range of latest & trending products', 'Best quality with best profit margins', 'Special prices on bulk orders', 'Regular new stock updates', 'Strong & reliable customer support'].map((text) => ({ text: text, d: I.check }));
+    const bulkPoints = ['Special prices on bulk orders', 'Best quality with best profit margins', 'Regular new stock updates', '100% genuine products', 'Strong & reliable customer support'].map((text) => ({ text: text, d: I.check }));
+    const collage = [['tripods', 'tripod'], ['audio', 'headphones'], ['ring-lights', 'ring'], ['chargers', 'charger'], ['selfie-sticks', 'selfie'], ['car', 'car'], ['cables', 'cable'], ['massagers', 'massager']]
+      .map((g, i) => ({ img: IMG[g[1]], bg: TINTS[i % TINTS.length], name: catName[g[0]], open: openCat(g[0]) }));
+    const insta = [['ring', 'Celebrating the freedom we enjoy'], ['headphones', 'Stage pe aag lagane aa rahe hain hum dono'], ['selfie', 'Selfie stick wholesale — stock up now'], ['stand', 'Mobile stands for every desk'], ['bike', 'Bike mobile holders — ride safe'], ['car', 'Super fast car chargers'], ['tripod', 'Tripods for creators'], ['drone', 'Foldable camera drone']]
+      .map((g, i) => ({ img: IMG[g[0]], caption: g[1], bg: TINTS[(i + 1) % TINTS.length] }));
+
+    // Catalog
+    const colTitle = { all: 'All Products', 'c:top': 'Top Sellers', 'c:new': 'New Arrivals', 'c:deals': 'Best Deals' };
+    const matchKey = (p, key) => key === 'all' ? true : key.indexOf('c:') === 0 ? p.tags.indexOf(key.slice(2)) >= 0 : p.cat === key;
+    // Search engine: every word of the query must match (prefix, plural-insensitive) the
+    // product name, its category, or its keywords; results ranked by relevance.
+    const KW = {
+      mic: 'mic mike microphone wireless lavalier collar recording audio vlog',
+      earbuds: 'earbuds earbud earphones earphone tws buds bluetooth wireless audio anc',
+      speaker: 'headphones headphone headset bluetooth wireless audio',
+      tripod: 'tripod stand camera mobile video',
+      selfie: 'selfie stick monopod tripod bluetooth',
+      ring: 'ring light led rgb lamp video',
+      holder: 'mobile phone holder stand mount desk',
+      pouch: 'waterproof pouch cover case mobile',
+      charger: 'charger adapter adaptor fast charging plug usb',
+      cable: 'cable wire cord usb type c typec charging data',
+      car: 'car charger vehicle usb type c typec fast charging',
+      massager: 'massager massage gun body',
+      toy: 'toy toys kids',
+      watch: 'smartwatch smart watch wearable fitness',
+      bike: 'bike bicycle motorcycle scooter holder mount mobile phone'
+    };
+    const EXTRA = { drone: 'drone camera foldable quadcopter', walkie: 'walkie talkie video' };
+    const TAGKW = { top: 'top seller best popular', new: 'new arrival latest', deals: 'deal deals offer sale discount' };
+    const norm = (t) => String(t).toLowerCase().replace(/[^a-z0-9₹]+/g, ' ').trim();
+    const stem = (w) => (w.length > 4 && /ies$/.test(w) ? w.slice(0, -3) + 'y' : w.length > 3 && /s$/.test(w) && !/ss$/.test(w) ? w.slice(0, -1) : w);
+    const words = (t) => norm(t).split(' ').filter(Boolean).map(stem);
+    const index = {};
+    PRODUCTS.forEach((p) => {
+      index[p.id] = {
+        name: words(p.name),
+        rest: words([catName[p.cat] || '', KW[p.k] || '', EXTRA[p.id] || '', p.tags.map((t) => TAGKW[t] || '').join(' ')].join(' '))
+      };
+    });
+    const scoreOf = (p, toks, full) => {
+      const ix = index[p.id];
+      let score = 0, hits = 0;
+      toks.forEach((t) => {
+        if (ix.name.some((w) => w.indexOf(t) === 0)) { score += 3; hits++; }
+        else if (ix.rest.some((w) => w.indexOf(t) === 0)) { score += 1; hits++; }
+      });
+      if (full && norm(p.name).indexOf(full) >= 0) score += 5;
+      return { score: score, hits: hits };
+    };
+    const searchIn = (pool, text) => {
+      const toks = words(text);
+      if (!toks.length) return { items: pool, loose: false };
+      const full = norm(text);
+      const scored = pool.map((p) => Object.assign({ p: p }, scoreOf(p, toks, full)));
+      let hitsNeeded = toks.length;
+      let found = scored.filter((x) => x.hits >= hitsNeeded);
+      let loose = false;
+      if (!found.length && toks.length > 1) { found = scored.filter((x) => x.hits > 0); loose = found.length > 0; }
+      found.sort((a, b) => b.score - a.score || b.hits - a.hits);
+      return { items: found.map((x) => x.p), loose: loose };
+    };
+
+    const q = s.q.trim().toLowerCase();
+    let list = PRODUCTS.filter((p) => matchKey(p, s.cat));
+    let searchNote = '';
+    if (q) {
+      let r = searchIn(list, q);
+      if (!r.items.length && s.cat !== 'all') {
+        const wide = searchIn(PRODUCTS, q);
+        if (wide.items.length) {
+          r = wide;
+          searchNote = 'No matches in ' + (colTitle[s.cat] || catName[s.cat]) + ' — showing results from all categories.';
+        }
+      }
+      if (r.loose && !searchNote) searchNote = 'No exact match for every word — showing the closest matches.';
+      list = r.items;
+    }
+    if (s.sort === 'low') list = list.slice().sort((a, b) => a.price - b.price);
+    if (s.sort === 'high') list = list.slice().sort((a, b) => b.price - a.price);
+    if (s.sort === 'name') list = list.slice().sort((a, b) => a.name.localeCompare(b.name));
+    const results = list.map(vm);
+    const filterBtn = (key, name) => ({ name: name, n: PRODUCTS.filter((p) => matchKey(p, key)).length, on: s.cat === key ? 'is-on' : '', pick: () => this.setState({ cat: key }) });
+    const collections = ['all', 'c:top', 'c:new', 'c:deals'].map((k) => filterBtn(k, colTitle[k]));
+    const catFilters = CATS.map((c) => filterBtn(c.slug, c.name));
+    const catTitle = q && (s.cat === 'all' || searchNote.indexOf('No matches in') === 0) ? 'Search Results' : (colTitle[s.cat] || catName[s.cat] || 'All Products');
+
+    // Live suggestions while typing in the header search
+    const draft = s.qDraft.trim();
+    const sugOn = s.sugOpen && draft.length >= 2;
+    let sugCats = [], sugProducts = [];
+    if (sugOn) {
+      const dtoks = words(draft);
+      sugCats = CATS.filter((c) => {
+        const cw = words(c.name + ' ' + c.slug);
+        return dtoks.every((t) => cw.some((w) => w.indexOf(t) === 0));
+      }).slice(0, 3);
+      sugProducts = searchIn(PRODUCTS, draft).items.slice(0, 6);
+    }
+    const nSugCats = sugCats.length;
+    const sugTotal = nSugCats + sugProducts.length;
+    const sugActive = s.sugIdx >= 0 && s.sugIdx < sugTotal ? s.sugIdx : -1;
+    const closeSug = { sugOpen: false, sugIdx: -1 };
+    const sugCatVm = sugCats.map((c, i) => ({
+      name: c.name, img: IMG[c.im], bg: TINTS[CATS.indexOf(c) % TINTS.length],
+      active: sugActive === i ? 'is-active' : '', selected: sugActive === i,
+      pick: () => this.go('catalog', Object.assign({ cat: c.slug, q: '', qDraft: '' }, closeSug))
+    }));
+    const sugProdVm = sugProducts.map((p, j) => Object.assign(vm(p), {
+      catName: catName[p.cat] || '',
+      active: sugActive === nSugCats + j ? 'is-active' : '', selected: sugActive === nSugCats + j,
+      pick: () => this.go('product', Object.assign({ pid: p.id, qty: 1 }, closeSug))
+    }));
+    const sugPicks = sugCatVm.map((x) => x.pick).concat(sugProdVm.map((x) => x.pick));
+
+    // Product
+    const P = byId[s.pid] || PRODUCTS[0];
+    const pd = Object.assign(vm(P), {
+      catName: catName[P.cat], openCat: openCat(P.cat),
+      thumbs: [0, 1, 2, 3].map((i) => ({ bg: TINTS[(P.idx + i) % TINTS.length], d: P.d, img: P.img, hasImg: !!P.img, noImg: !P.img })),
+      waLink: wa('917053838682', 'Hi Royal Dark, I am interested in ' + P.name + ' (' + fmt(P.price) + '). Is it available?'),
+      addQty: () => this.addToCart(P.id, s.qty),
+      buyQty: () => { this.addToCart(P.id, s.qty, true); this.go('cart'); }
+    });
+    const related = PRODUCTS.filter((p) => p.id !== P.id && p.cat === P.cat)
+      .concat(PRODUCTS.filter((p) => p.id !== P.id && p.cat !== P.cat)).slice(0, 6).map(vm);
+
+    // Cart
+    const cartItems = s.cart.filter((it) => byId[it.id]).map((it) => {
+      const p = byId[it.id];
+      return Object.assign(vm(p), {
+        qty: it.qty, unitText: fmt(p.price) + ' each', lineText: fmt(p.price * it.qty),
+        inc: () => this.setQty(p.id, it.qty + 1), dec: () => this.setQty(p.id, it.qty - 1), remove: () => this.setQty(p.id, 0)
+      });
+    });
+    const cartCount = s.cart.reduce((a, b) => a + b.qty, 0);
+    const sub = s.cart.reduce((a, it) => a + (byId[it.id] ? byId[it.id].price * it.qty : 0), 0);
+    const disc = s.coupon === 'SAVE10' ? Math.round(sub * 0.1) : 0;
+    const total = sub - disc;
+
+    // Checkout
+    const f = s.form;
+    const digits = f.phone.replace(/\D/g, '');
+    const missing = [];
+    if (!f.name.trim()) missing.push('name');
+    if (digits.length < 10) missing.push('10-digit phone');
+    if (!f.address.trim()) missing.push('address');
+    if (!/^\d{6}$/.test(f.pin.trim())) missing.push('6-digit pincode');
+    const canOrder = cartCount > 0 && missing.length === 0;
+    const payLabel = s.pay === 'cod' ? 'Cash on Delivery' : 'UPI after confirmation';
+    const lines = cartItems.map((it) => '• ' + it.name + ' × ' + it.qty + ' = ' + it.lineText);
+    const orderText = ['New order — Royal Dark', ''].concat(lines).concat([
+      '', 'Subtotal: ' + fmt(sub),
+      disc ? 'Coupon SAVE10: −' + fmt(disc) : null,
+      'Total: ' + fmt(total), '',
+      'Name: ' + f.name.trim(), 'Phone: ' + f.phone.trim(),
+      'Address: ' + f.address.trim() + ', ' + f.city.trim() + ' - ' + f.pin.trim(),
+      'Payment: ' + payLabel,
+      f.notes.trim() ? 'Notes: ' + f.notes.trim() : null
+    ]).filter((x) => x !== null).join('\n');
+    const waOrder = wa('917053838682', orderText);
+
+    // Contact & bulk
+    const c = s.contact;
+    const canContact = !!(c.name.trim() && c.msg.trim());
+    const waContact = wa('917053838682', 'Hi Royal Dark, I am ' + c.name.trim() + (c.phone.trim() ? ' (' + c.phone.trim() + ')' : '') + '.\n\n' + c.msg.trim());
+    const b = s.bulk;
+    const canBulk = !!(b.shop.trim() && b.items.trim());
+    const waBulk = wa('917053838682', 'Bulk order enquiry — Royal Dark\n\nShop: ' + b.shop.trim() + '\nPhone: ' + b.phone.trim() + '\nCity: ' + b.city.trim() + '\n\nProducts & quantities:\n' + b.items.trim());
+
+    const catSelect = CATS.some((x) => x.slug === s.cat) ? s.cat : 'all';
+    const page = s.page;
+    return {
+      I, cats, hero: slides[idx], dots, deals, sellers, arrivals, trust, why, bulkPoints, collage, insta,
+      prevSlide: () => goSlide(idx - 1), nextSlide: () => goSlide(idx + 1),
+      isHome: page === 'home', isCatalog: page === 'catalog', isProduct: page === 'product', isCart: page === 'cart',
+      isCheckout: page === 'checkout', isSuccess: page === 'success', isContact: page === 'contact',
+      isBulk: page === 'bulk', isAbout: page === 'about', isAccount: page === 'account',
+      goHome: () => this.go('home'), goCatalog: openCat('all'), goTop: openCat('c:top'), goNew: openCat('c:new'), goDeals: openCat('c:deals'),
+      goCart: () => this.go('cart', { toast: '' }), goCheckout: () => this.go('checkout'), goContact: () => this.go('contact'),
+      goBulk: () => this.go('bulk'), goAbout: () => this.go('about'), goAccount: () => this.go('account', { authMsg: '' }),
+      qDraft: s.qDraft, qDraftTrim: draft,
+      setQDraft: (e) => this.setState({ qDraft: e.target.value, sugOpen: true, sugIdx: -1 }),
+      doSearch: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const text = this.state.qDraft.trim();
+        try { if (document.activeElement) document.activeElement.blur(); } catch (err) {}
+        this.go('catalog', { q: text, qDraft: text, cat: catSelect, sort: 'featured', sugOpen: false, sugIdx: -1 });
+      },
+      showSugg: sugOn, sugCats: sugCatVm, sugProducts: sugProdVm,
+      sugHasCats: nSugCats > 0, sugHasProducts: sugProdVm.length > 0,
+      sugHasAny: sugTotal > 0, sugNone: sugOn && sugTotal === 0,
+      sugFocus: () => { clearTimeout(this.blurT); if (!this.state.sugOpen) this.setState({ sugOpen: true }); },
+      sugBlur: () => { clearTimeout(this.blurT); this.blurT = setTimeout(() => this.setState({ sugOpen: false, sugIdx: -1 }), 150); },
+      keepFocus: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+      sugKey: (e) => {
+        if (e.key === 'Escape') { this.setState({ sugOpen: false, sugIdx: -1 }); return; }
+        if (!sugOn || !sugTotal) return;
+        if (e.key === 'ArrowDown') { e.preventDefault(); this.setState({ sugIdx: sugActive < sugTotal - 1 ? sugActive + 1 : 0 }); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); this.setState({ sugIdx: sugActive > 0 ? sugActive - 1 : sugTotal - 1 }); }
+        else if (e.key === 'Enter' && sugActive >= 0) { e.preventDefault(); sugPicks[sugActive](); }
+      },
+      hasSearchNote: !!searchNote, searchNote: searchNote,
+      catSelect: catSelect, pickCatSelect: (e) => this.go('catalog', { cat: e.target.value }),
+      q: s.q, hasQuery: !!q, clearQuery: () => this.setState({ q: '', qDraft: '' }),
+      clearFilters: () => this.setState({ q: '', qDraft: '', cat: 'all' }),
+      sort: s.sort, setSort: (e) => this.setState({ sort: e.target.value }),
+      catTitle: catTitle, catSub: q ? 'Showing results for “' + s.q.trim() + '”' : 'Genuine accessories — order single pieces or in bulk.',
+      collections, catFilters, results, hasResults: results.length > 0, noResults: results.length === 0,
+      resultCount: results.length + (results.length === 1 ? ' product' : ' products'),
+      pd, related, qty: s.qty,
+      qtyInc: () => this.setState({ qty: Math.min(99, this.state.qty + 1) }),
+      qtyDec: () => this.setState({ qty: Math.max(1, this.state.qty - 1) }),
+      cartItems, cartCount, hasCart: cartCount > 0, cartEmpty: cartCount === 0,
+      subText: fmt(sub), discText: fmt(disc), totalText: fmt(total), hasDiscount: disc > 0,
+      couponDraft: s.couponDraft, setCouponDraft: (e) => this.setState({ couponDraft: e.target.value }),
+      applyCoupon: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const code = this.state.couponDraft.trim().toUpperCase();
+        if (code === 'SAVE10') this.setState({ coupon: 'SAVE10', couponOk: true, couponMsg: 'SAVE10 applied — 10% off your order.' });
+        else this.setState({ coupon: '', couponOk: false, couponMsg: code ? 'That code isn’t valid. Try SAVE10.' : 'Enter a coupon code.' });
+      },
+      hasCouponMsg: !!s.couponMsg, couponMsg: s.couponMsg, couponColor: s.couponOk ? '#1f7a3f' : '#b42318',
+      form: f, fName: setF('form', 'name'), fPhone: setF('form', 'phone'), fAddress: setF('form', 'address'),
+      fCity: setF('form', 'city'), fPin: setF('form', 'pin'), fNotes: setF('form', 'notes'),
+      payCod: s.pay === 'cod', payUpi: s.pay === 'upi',
+      pickCod: () => this.setState({ pay: 'cod' }), pickUpi: () => this.setState({ pay: 'upi' }),
+      canOrder, cantOrder: !canOrder,
+      orderHint: 'Add your ' + missing.join(', ') + ' to place the order.',
+      waOrder,
+      placeOrder: () => {
+        this.setState({ lastOrder: { count: cartCount, total: fmt(total), link: waOrder }, cart: [], coupon: '', couponDraft: '', couponMsg: '', page: 'success' });
+        try { window.scrollTo(0, 0); } catch (e) {}
+      },
+      lastCount: s.lastOrder ? s.lastOrder.count : 0, lastTotal: s.lastOrder ? s.lastOrder.total : '', lastLink: s.lastOrder ? s.lastOrder.link : waOrder,
+      contact: c, cName: setF('contact', 'name'), cPhone: setF('contact', 'phone'), cMsg: setF('contact', 'msg'),
+      canContact, cantContact: !canContact, waContact,
+      bulk: b, bShop: setF('bulk', 'shop'), bPhone: setF('bulk', 'phone'), bCity: setF('bulk', 'city'), bItems: setF('bulk', 'items'),
+      canBulk, cantBulk: !canBulk, waBulk,
+      waDilip: wa('917053838682', 'Hi Royal Dark, I have a question about your products.'),
+      waRohit: wa('918750284942', 'Hi Royal Dark, I have a question about your products.'),
+      mapsLink: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('283/A3, Than Singh Nagar, Anand Parbat, Near CNG Pump, New Delhi 110005'),
+      isLoginTab: s.authTab === 'login', isRegTab: s.authTab === 'register',
+      tabLoginOn: s.authTab === 'login' ? 'is-on' : '', tabRegOn: s.authTab === 'register' ? 'is-on' : '',
+      tabLogin: () => this.setState({ authTab: 'login', authMsg: '' }), tabReg: () => this.setState({ authTab: 'register', authMsg: '' }),
+      authSubmit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ authMsg: 'Online accounts are coming soon. You can still order now — checkout sends your order to us on WhatsApp.' }); },
+      hasAuthMsg: !!s.authMsg, authMsg: s.authMsg,
+      quick: [['Home', () => this.go('home')], ['About Us', () => this.go('about')], ['Catalog', openCat('all')], ['New Arrivals', openCat('c:new')], ['Best Deals', openCat('c:deals')], ['Contact Us', () => this.go('contact')]].map((l) => ({ name: l[0], go: l[1] })),
+      footCats: cats.slice(0, 8),
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>
